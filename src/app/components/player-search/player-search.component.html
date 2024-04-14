@@ -1,0 +1,8 @@
+
+<form [formGroup]="frm" (ngSubmit)="onPost()">
+
+    <ng-select [(ngModel)]="selectedCar" style="font-family: roboto">
+        <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
+     </ng-select>
+
+</form>
