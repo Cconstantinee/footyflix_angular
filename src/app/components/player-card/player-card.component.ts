@@ -7,12 +7,42 @@ import { Component, Input } from '@angular/core';
 })
 export class PlayerCardComponent {
   @Input() imageUrl: string="../../../assets/default-card.svg"; // Input for image URL
-  text: string='________';
+  showForm: boolean = false;
+  text: string|undefined='';
+  description: string='';
+  disableHover: boolean = false; // Flag to disable hover effects when form is toggled
+
   onMouseOver() {
-    this.text='Add player';
+    // Check if hover effects should be disabled
+    if ((this.text=='')&&(!this.showForm)) {
+      this.description = 'Add player';
+    }
   }
 
   onMouseOut() {
-    this.text='________';
+    // Check if hover effects should be disabled
+    this.description = '';
+  }
+
+  buttonClicked(){
+    this.showForm = !this.showForm;
+    if (this.description!='') {
+      this.description='';
+    }
+    this.disableHover = this.showForm;
+    if((this.text!='') && (this.text!='Add player')){
+      this.imageUrl='../../../assets/filled-card.svg';
+    }
+    else{
+      this.imageUrl="../../../assets/default-card.svg";
+    }
+  }
+
+  getMessage(selectedPlayer: string) {
+    this.text = selectedPlayer;
+    if((this.text!='') && (this.text!='Add player')){
+      this.imageUrl='../../../assets/filled-card.svg';
+    }
+    console.log(selectedPlayer);
   }
 }

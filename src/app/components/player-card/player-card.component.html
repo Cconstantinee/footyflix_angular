@@ -1,10 +1,11 @@
 
-<div class=" image-container text-center p-2 m-2">
-  <button type="button" class="custom-button" (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
+<div class=" image-container text-center p-2 m-2" >
+  <button type="button" class="custom-button" (click)="buttonClicked()" (mouseenter)="onMouseOver()" (mouseleave)="onMouseOut()">
     <img src="{{ imageUrl }}" alt="Button Image">
     <span class="plus-sign">+</span>
   </button>
   <p class="color-light ">{{text}}</p>
-  <app-player-search></app-player-search>
+  <p class="color-light ">{{description}}</p>
+  <app-player-search *ngIf="showForm" (messageEvent)="getMessage($event)"></app-player-search>
 </div>
 

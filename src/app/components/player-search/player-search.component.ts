@@ -1,33 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormGroup} from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-player-search',
   templateUrl: './player-search.component.html',
-  styleUrl: './player-search.component.css'
+  styleUrls: ['./player-search.component.css']
 })
 export class PlayerSearchComponent implements OnInit {
-
-  selectedCar: string='Select a player';
-
+  
+  @Output() messageEvent = new EventEmitter<string>();
+  selectedCar: number | null = null; // Change the type to number and initialize with null
   cars = [
-      { id: 1, name: 'Volvo' },
-      { id: 2, name: 'Saab' },
-      { id: 3, name: 'Opel' },
-      { id: 4, name: 'Audi' },
+    { id: 1, name: 'Volvo' },
+    { id: 2, name: 'Saab' },
+    { id: 3, name: 'Opel' },
+    { id: 4, name: 'Audi' }
   ];
-  isSubmitted:boolean=false;
-  onPost= ()=>this.isSubmitted=true;
 
-frm!:FormGroup;
-ngOnInit(): void {
-  this.frm=this.fb.group({
-    'cars':[],
-    'descriptions':['']
-  })
-}
-
-  constructor(private fb:FormBuilder){
-
+  sendMessage() {
+    if (this.selectedCar !== null) { // Check if selectedCar is not null
+      const selectedPlayerId = this.selectedCar;
+      const selectedPlayerName = this.cars.find(car => car.id === selectedPlayerId)?.name;
+      if (selectedPlayerName) {
+        this.messageEvent.emit(selectedPlayerName);
+        console.log("Selected player:", selectedPlayerName, " " ,selectedPlayerId);
+      }
+    }
   }
 
+  isSubmitted = false;
+  onPost = () => this.isSubmitted = true;
+
+  frm!: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.frm = this.fb.group({
+      'cars': []
+    });
+  }
 }
