@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-front-page-button',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './front-page-button.component.css'
 })
 export class FrontPageButtonComponent {
-
+  @Output() clickEvent=new EventEmitter<string>();
+  teams_console_clicked(){
+    this.clickEvent.emit('open_teams_console');
+  }
+  tournaments_console_clicked(){
+    this.clickEvent.emit('open_tournaments_console');
+  }
 }

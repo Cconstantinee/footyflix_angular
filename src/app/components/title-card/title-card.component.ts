@@ -6,7 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './title-card.component.css'
 })
 export class TitleCardComponent {
-  @Input() title_card_text:string='';
-  @Input() title_card_description:string='';
-  
+  @Input() title_varient:string ='';
+  @Input() consoleActive:boolean=false;
 }

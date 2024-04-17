@@ -1,0 +1,53 @@
+
+
+<div class="row justify-content-center ">
+    <div class="col-6">
+        <button class="btn custom-button w-100" *ngIf="!matchMakerOn" (click)="toggleMatchMaker()">matches</button>
+        <div class="d-flex custom-image-container align-items-center justify-content-center h-100" *ngIf="matchMakerOn">matches</div>
+    </div>
+    <div class="col-6">
+        <button class="btn custom-button w-100" *ngIf="matchMakerOn" (click)="toggleMatchMaker()">teams</button>
+        <div class="d-flex custom-image-container align-items-center justify-content-center h-100" *ngIf="!matchMakerOn">teams</div>
+    </div>
+</div>
+<!--the actual console card-->
+<div class="row" >
+    <app-matches-console *ngIf="matchMakerOn"></app-matches-console>
+    <div class="card custom-card" *ngIf="!matchMakerOn">
+        <!--team manager title------------------------------------------------->
+            <div class="row p-3">
+                <h1 class="fw-light custom-card-text">My team</h1>
+                <div class="divider-white"></div>
+                <p class="fw-light custom-card-text">Choose team to be displayed in the management tool below, or create a new one.</p>
+                
+            </div>
+        <!--team manager console------------------------------------------------->    
+            <div class="row">
+                <!--selection screen-->
+                <div class="col">
+                    <select class="form-select custom-select" aria-label="Default select example" [disabled]="!areThereTeams">
+                        <option selected>Select your team here</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                </div>
+                <!--display/edit screen-->
+                <div class="col">
+
+                </div>
+            </div>
+        <!--team creator title------------------------------------------------->    
+        <div class="row p-3">
+            <h1 class="fw-light custom-card-text">Ceator tool</h1>
+            <div class="divider-white"></div>
+            <p class="fw-light custom-card-text">Choose a position, then use the side navigation bar the choose a player to be added to that position.</p>
+            
+        </div>
+         <!--team creator console------------------------------------------------->   
+            <div class="row">
+        
+            </div>
+            
+        </div>    
+</div>

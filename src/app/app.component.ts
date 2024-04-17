@@ -8,7 +8,23 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'footyflix_angular';
   imageUrl: string = '';
-  title_card_text: string='FOOTYFLIX';
-  title_card_description: string='Your friendly neighborhood platform uniting players, football  enthusiasts, and sporting facility owners in one goal-scoring community!';
+  title_varient:string='front_title';
+  
+  ConsolesActive: boolean=false;
+
+  handleButtons(input:string){
+    switch (input) {
+      case 'open_teams_console':
+          this.title_varient='teams_console_title'
+          this.ConsolesActive=true;
+        break;
+      case 'open_main_page' :
+        this.title_varient='front_title';
+        
+        break;
+      default:
+        break;
+    }
+  }
   
 }

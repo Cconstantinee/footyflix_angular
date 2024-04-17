@@ -13,6 +13,9 @@ import { FrontPageButtonComponent } from './components/front-page-button/front-p
 import { FrontStadiumButtonComponent } from './components/front-stadium-button/front-stadium-button.component';
 import { FrontNewsButtonComponent } from './components/front-news-button/front-news-button.component';
 import { TitleCardComponent } from './components/title-card/title-card.component';
+import { NavigationDeckComponent } from './components/navigation-deck/navigation-deck.component';
+import { TeamsConsoleComponent } from './pages/teams-console/teams-console.component';
+import { MatchesConsoleComponent } from './pages/matches-console/matches-console.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +27,9 @@ import { TitleCardComponent } from './components/title-card/title-card.component
     FrontStadiumButtonComponent,
     FrontNewsButtonComponent,
     TitleCardComponent,
+    NavigationDeckComponent,
+    TeamsConsoleComponent,
+    MatchesConsoleComponent,
     
     
   ],

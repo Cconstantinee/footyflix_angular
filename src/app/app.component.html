@@ -1,37 +1,32 @@
-<app-navbar></app-navbar>
-
+<app-navbar (clickEvent)="handleButtons($event)"></app-navbar>
+<!--{{title_varient}}-->
+<!--{{ConsolesActive}}-->
 <body>
     <div class="container">
         <div class="row px-2 py-4" style="color: #253738; border: #253738;border-radius: 1px;">
-            <app-title-card [title_card_text]="title_card_text" [title_card_description]="title_card_description"></app-title-card>
+            <app-title-card [title_varient]="title_varient" [consoleActive]="ConsolesActive"></app-title-card>
         </div>
-        <!--nav buttons-------------------------------------------------------------->
-        <div class="row text-center">
-            <div class="col">
-                <img src="../assets/stadium-logo(1).png" class="button-icon" alt=""> 
-            </div>
-            <div class="col ">
-                <img src="../assets/team-logo(1).png" class="button-icon" alt="">
-            </div>
-            <div class="col">
-                <img src="../assets/news-logo(1).png" class="button-icon" alt="">
-            </div>
-        </div>
-        <div class="divider-dark m-2"></div>
+        <app-navigation-deck [ConsolesActive]="ConsolesActive"></app-navigation-deck>
+
+        <!----------------------------------------------------------------------------------------->
+        <div class="divider-dark my-2"></div>
         <!--cards---------------------------------------------------------------------------->
-        <div class="row text-center">
+        <div class="row text-center" *ngIf="title_varient=='front_title'">
             <div class="col">
                 
                 <app-front-stadium-button></app-front-stadium-button>
             </div>
             <div class="col ">
                 
-                <app-front-page-button></app-front-page-button>
+                <app-front-page-button (clickEvent)="handleButtons($event)"></app-front-page-button>
             </div>
             <div class="col">
                 
                 <app-front-news-button></app-front-news-button>
             </div>
         </div>
+        <!--console 1---------------------------------------------------------------------------->
+    <app-teams-console *ngIf="title_varient=='teams_console_title'"></app-teams-console>
     </div>
 </body>
+ 

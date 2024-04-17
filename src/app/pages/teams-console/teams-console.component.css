@@ -1,0 +1,58 @@
+.custom-card {
+    
+    border: none; /* Remove border */
+    background-color: #2D5E61;
+    
+  }
+
+  .custom-button {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #2D5E61;
+    color:white;
+    z-index: 1;
+    opacity: 0.5;
+    border-color: white;
+    /* Add other button styles as needed */
+
+  }
+  .custom-button:hover{
+    box-shadow: 0 -2px 10px rgba(131, 247, 120, 0.5);
+    border-color: green;
+  }
+
+  .custom-image-container {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: #2D5E61; /* Example color, replace with your desired color */
+    color: white; /* Text color, adjust as needed */
+    /* Add other container styles as needed */
+    z-index: 1; /* Set a higher z-index value to bring the container to the front */
+  }
+  
+  .custom-select {
+    border: 1px solid white; /* Set white borders */
+    color: white; /* Set white text color */
+    background-color: #253738; /* Set custom background color */
+    /* Additional styling as needed */
+  }
+  
+  /* Style the dropdown arrow */
+  .custom-select::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: white transparent transparent transparent; /* Set arrow color */
+    transform: translateY(50%);
+    filter: invert(1); /* Invert the arrow color */
+  }
+  

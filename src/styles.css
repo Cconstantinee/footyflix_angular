@@ -26,6 +26,15 @@
   width: 100%; /* Make the divider span the entire width of its container */
   background-color: #253738; /* Replace 'your_custom_color_here' with your desired color */
 }
+
+.divider-white {
+  height: 1px; /* Adjust the height of the divider */
+  width: 98%; /* Make the divider span the entire width of its container */
+  background-color: white; /* Replace 'your_custom_color_here' with your desired color */
+  margin: 0 auto; /* Center the divider horizontally */
+}
+
+
 .button-icon{
   height: 50px;
   width: auto;
