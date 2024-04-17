@@ -1,0 +1,8 @@
+.btn {
+  border: none; 
+  
+}
+
+.btn:hover {
+  border: 1px solid #ddd; 
+}

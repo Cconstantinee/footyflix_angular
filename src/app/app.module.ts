@@ -7,11 +7,23 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
 import { PlayerSearchComponent } from './components/player-search/player-search.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FrontPageComponent } from './pages/front-page/front-page.component';
+import { FrontPageButtonComponent } from './components/front-page-button/front-page-button.component';
+import { FrontStadiumButtonComponent } from './components/front-stadium-button/front-stadium-button.component';
+import { FrontNewsButtonComponent } from './components/front-news-button/front-news-button.component';
+import { TitleCardComponent } from './components/title-card/title-card.component';
 @NgModule({
   declarations: [
     AppComponent,
     PlayerCardComponent,
     PlayerSearchComponent,
+    NavbarComponent,
+    FrontPageComponent,
+    FrontPageButtonComponent,
+    FrontStadiumButtonComponent,
+    FrontNewsButtonComponent,
+    TitleCardComponent,
     
     
   ],
@@ -23,4 +35,6 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+}

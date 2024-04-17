@@ -1,0 +1,7 @@
+.container {
+    width: 80%; /* Set the width of the container */
+    margin: 0 auto; /* Set left and right margins to auto */
+    
+    padding: 20px;
+  }
+

@@ -1,13 +1,37 @@
-<div class="container">
-    <img src="" alt="">
-    <div class="row">
-        <div class="row">
-            <app-player-card></app-player-card>
+<app-navbar></app-navbar>
+
+<body>
+    <div class="container">
+        <div class="row px-2 py-4" style="color: #253738; border: #253738;border-radius: 1px;">
+            <app-title-card [title_card_text]="title_card_text" [title_card_description]="title_card_description"></app-title-card>
         </div>
-        <div class="col">
-            
-            
-            
+        <!--nav buttons-------------------------------------------------------------->
+        <div class="row text-center">
+            <div class="col">
+                <img src="../assets/stadium-logo(1).png" class="button-icon" alt=""> 
+            </div>
+            <div class="col ">
+                <img src="../assets/team-logo(1).png" class="button-icon" alt="">
+            </div>
+            <div class="col">
+                <img src="../assets/news-logo(1).png" class="button-icon" alt="">
+            </div>
+        </div>
+        <div class="divider-dark m-2"></div>
+        <!--cards---------------------------------------------------------------------------->
+        <div class="row text-center">
+            <div class="col">
+                
+                <app-front-stadium-button></app-front-stadium-button>
+            </div>
+            <div class="col ">
+                
+                <app-front-page-button></app-front-page-button>
+            </div>
+            <div class="col">
+                
+                <app-front-news-button></app-front-news-button>
+            </div>
         </div>
     </div>
-</div>
+</body>

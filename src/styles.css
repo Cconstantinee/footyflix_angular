@@ -1,5 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+.card-front {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Adjust values as needed */
+    min-height: 100%;
+  }
+  .row {
+    display: flex;
+    align-items: stretch; /* Stretch cards to fill row height */
+  }
 
-.container{
-    background-color:darkslategray;
+  .card-front{
+    background-color: #253738;
+  }
+
+  .custom-card-text{
+    color:white;
+  }
+
+  .btn-front{
+    flex:1;
+  }
+
+
+.divider-dark {
+  height: 1px; /* Adjust the height of the divider */
+  width: 100%; /* Make the divider span the entire width of its container */
+  background-color: #253738; /* Replace 'your_custom_color_here' with your desired color */
+}
+.button-icon{
+  height: 50px;
+  width: auto;
 }
