@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,8 @@ import { NavigationDeckComponent } from './components/navigation-deck/navigation
 import { TeamsConsoleComponent } from './pages/teams-console/teams-console.component';
 import { MatchesConsoleComponent } from './pages/matches-console/matches-console.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TeamFormComponent } from './components/team-form/team-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +35,14 @@ import { HttpClientModule } from '@angular/common/http';
     NavigationDeckComponent,
     TeamsConsoleComponent,
     MatchesConsoleComponent,
+    TeamFormComponent,
     
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgSelectModule, FormsModule,ReactiveFormsModule,HttpClientModule
+    NgSelectModule, FormsModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

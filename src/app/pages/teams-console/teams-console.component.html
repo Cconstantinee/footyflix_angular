@@ -23,8 +23,9 @@
             </div>
         <!--team manager console------------------------------------------------->    
             <div class="row">
+                 
         <!--selection screen--------------------------------------------->
-        <div class="col">                    
+        <div class="col col">                    
             <select class="form-select custom-select" aria-label="Default select example" [disabled]="!areThereTeams">
                 <option value="select a team" disabled selected>select a team</option>
                 <option *ngFor="let team of teams" [value]="team.team_id">{{team.team_name}}</option>
@@ -34,7 +35,7 @@
 
                 <!--display/edit screen-->
                 <div class="col">
-
+                    <img src="../../../assets/background-gola(1).png" height="250" alt="">
                 </div>
             </div>
         <!--team creator title------------------------------------------------->    
@@ -56,3 +57,4 @@
             
         </div>
 </div>
+<app-team-form></app-team-form>
