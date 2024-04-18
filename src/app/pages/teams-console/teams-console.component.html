@@ -16,6 +16,7 @@
     <div class="card custom-card" *ngIf="!matchMakerOn">
         <!--team manager title------------------------------------------------->
             <div class="row p-3">
+                
                 <h1 class="fw-light custom-card-text">My team</h1>
                 <div class="divider-white"></div>
                 <p class="fw-light custom-card-text">Choose team to be displayed in the management tool below, or create a new one.</p>
@@ -25,15 +26,15 @@
             <div class="row">
                  
         <!--selection screen--------------------------------------------->
-        <div class="col col">                    
+        <div class="col col">
+
             <select class="form-select custom-select" aria-label="Default select example" [disabled]="!areThereTeams">
                 <option value="select a team" disabled selected>select a team</option>
                 <option *ngFor="let team of teams" [value]="team.team_id">{{team.team_name}}</option>
             </select>
         </div>
         
-
-                <!--display/edit screen-->
+        <!--display/edit screen------------------------------------------>
                 <div class="col">
                     <img src="../../../assets/background-gola(1).png" height="250" alt="">
                 </div>

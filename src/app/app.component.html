@@ -13,7 +13,7 @@
         <!--cards---------------------------------------------------------------------------->
         <div class="row text-center" *ngIf="title_varient=='front_title'">
             <div class="col">
-                
+                <app-player-search></app-player-search>
                 <app-front-stadium-button></app-front-stadium-button>
             </div>
             <div class="col ">
@@ -27,6 +27,8 @@
         </div>
         <!--console 1---------------------------------------------------------------------------->
     <app-teams-console *ngIf="title_varient=='teams_console_title'"></app-teams-console>
+    
     </div>
 </body>
+
  

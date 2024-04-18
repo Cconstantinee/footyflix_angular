@@ -10,6 +10,9 @@ export class PlayerSearchComponent implements OnInit {
   
   @Output() messageEvent = new EventEmitter<string>();
   selectedCar: number | null = null; // Change the type to number and initialize with null
+
+  
+
   cars = [
     { id: 1, name: 'Volvo' },
     { id: 2, name: 'Saab' },

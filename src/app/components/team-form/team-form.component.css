@@ -1,17 +1,84 @@
+.modal-content{
+  background-color: #253738;
+  color:white;
+}
+
+.back-drop{
+  z-index:1;
+  position: relative;
+}
+.front-drop{
+  z-index:2 ;
+  position: relative;
+}
+
+@keyframes darkenBackground {
+  0% {
+    background-color: rgba(0, 0, 0, 0); /* Transparent background */
+
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  }
+}
+
 @keyframes fadeInAndRise {
-    from {
-      opacity: 0;
-      transform: translateY(50px); /* Adjust the initial translation as needed */
-      background-color: rgba(0, 0, 0, 0); /* Transparent background */
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-50px); /* Adjust the initial translation as needed */
   }
-  
-  .fade-in-and-rise {
-    animation: fadeInAndRise 0.3s ease-in-out;
+  20%{
+    opacity: 0;
+    transform: translateY(-50px);
   }
-  
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+.fade-in-and-rise{
+  animation: fadeInAndRise 0.5s ease-in-out;
+}
+
+.darken-background{
+  animation:  darkenBackground 0.3s forwards;
+}
+
+/*closing animations                                       ----------------------*/
+
+
+@keyframes lightenBackground {
+  0% {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0); /* Transparent background */
+  }
+}
+
+@keyframes fadeOutAndSink {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(50px); /* Adjust the translation distance as needed */
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+}
+
+.fade-out-and-sink {
+  animation: fadeOutAndSink 0.3s ease-in-out forwards;
+}
+
+.lighten-background {
+  animation: lightenBackground 0.3s forwards;
+}
+
