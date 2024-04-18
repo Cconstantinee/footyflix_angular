@@ -17,4 +17,9 @@ export class PlayersService {
     return this.http.get<any[]>(this.ROOT_URL);
   }
 
+  sendNewTeamToAPI(data:any[]): Observable<any[]>{
+    let params = new HttpParams();
+    return this.http.post<any[]>(this.ROOT_URL,data);
+  }
+
 }

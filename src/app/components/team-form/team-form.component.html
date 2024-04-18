@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-info btn-lg" (click)="openModal()">click to open</button>
+<button type="button" class="btn btn-info btn-lg w-100" (click)="openModal()">New team</button>
 
 <div class="modal shadow darken-background " tabindex="-1" [ngClass]="{'hide': display}" [ngStyle]="{'display': display}">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -10,63 +10,89 @@
         <div class="modal-body">
 <!----------------------------------------------------------->
             <div class="container-fluid ">
-                <div class="row pt-2 m-2 pb-3 justify-content-center">
-                  <div class="col col-5">
-                    <label for="team_name" class="form-label">Name:</label>
-                    <input type="text" class="form-control" placeholder="Enter your team name" required>
+                
+                  <div class="row pt-2 m-2 pb-3 justify-content-center">
+                    <div class="col col-5">
+                      <label for="team_name" class="form-label">Name:</label>
+                      <input type="text" class="form-control" name="team_name" [(ngModel)]="team_name" placeholder="Enter your team name" required>
+                    </div>
                   </div>
-                </div>
-                <div class="row p-2">
-
-                    <div class="col col-lg-4">
+                  <div class="row p-2">
+  
+                      <div class="col col-lg-4">
+                          
+                          <label for="position1" class="form-label">Postion 1:</label>
+                          <input type="hidden" name="position1" id="position1" value="{{selectedPlayers[1]}}">
+                          
+                          <app-player-search (messageEvent)="getPos($event,1)" [players]="allPlayers"></app-player-search>
+  
+                          <label for="position2" class="form-label">Postion 2:</label>
+                          <input type="hidden" name="position2" id="position2" value="{{selectedPlayers[2]}}">
+                          
+                          <app-player-search (messageEvent)="getPos($event,2)" [players]="allPlayers"></app-player-search>
+  
+                          <label for="position3" class="form-label">Postion 3:</label>
+                          <input type="hidden" name="position3" id="position3" value="{{selectedPlayers[3]}}">
+                          
+                          <app-player-search (messageEvent)="getPos($event,3)" [players]="allPlayers"></app-player-search>
+  
+                          <label for="position4" class="form-label">Postion 4:</label>
+                          <input type="hidden" name="position4" id="position4" value="{{selectedPlayers[4]}}">
+                          
+                          <app-player-search (messageEvent)="getPos($event,4)" [players]="allPlayers"></app-player-search>
+  
+                          <label for="position5" class="form-label">Postion 5:</label>
+                          <input type="hidden" name="position5" id="position5" value="{{selectedPlayers[5]}}">
+                          
+                          <app-player-search (messageEvent)="getPos($event,5)" [players]="allPlayers"></app-player-search>
+  
+                          <label for="position6" class="form-label">Postion 6:</label>
+                          <input type="hidden" name="position6" id="position6" value="{{selectedPlayers[6]}}">
+                          
+                          <app-player-search (messageEvent)="getPos($event,6)" [players]="allPlayers"></app-player-search>
+  
+                      </div>
+  
+                      <div class="col col-lg-4">
+                        <label for="position7" class="form-label">Postion 7:</label>
+                        <input type="hidden" name="position7" id="position7" value="{{selectedPlayers[7]}}">
                         
-                        <label for="position1" class="form-label">Postion 1:</label>
-                        <input type="hidden" name="position1" id="position1" value="{{position[1]}}">
+                        <app-player-search (messageEvent)="getPos($event,7)" [players]="allPlayers"></app-player-search>
+
+                        <label for="position8" class="form-label">Postion 8:</label>
+                        <input type="hidden" name="position8" id="position8" value="{{selectedPlayers[8]}}">
                         
-                        <app-player-search (messageEvent)="getPos($event,1)"></app-player-search>
+                        <app-player-search (messageEvent)="getPos($event,8)" [players]="allPlayers"></app-player-search>
 
-                        <label for="position1" class="form-label">Postion 2:</label>
-                        <input type="hidden" name="position1" id="position1" value="{{position[2]}}">
+                        <label for="position9" class="form-label">Postion 9:</label>
+                        <input type="hidden" name="position9" id="position9" value="{{selectedPlayers[9]}}">
                         
-                        <app-player-search (messageEvent)="getPos($event,2)"></app-player-search>
+                        <app-player-search (messageEvent)="getPos($event,9)" [players]="allPlayers"></app-player-search>
 
-                        <label for="position1" class="form-label">Postion 3:</label>
-                        <input type="hidden" name="position1" id="position1" value="{{position[3]}}">
+                        <label for="position10" class="form-label">Postion 10:</label>
+                        <input type="hidden" name="position10" id="position10" value="{{selectedPlayers[10]}}">
                         
-                        <app-player-search (messageEvent)="getPos($event,3)"></app-player-search>
+                        <app-player-search (messageEvent)="getPos($event,10)" [players]="allPlayers"></app-player-search>
 
-                        <label for="position1" class="form-label">Postion 4:</label>
-                        <input type="hidden" name="position1" id="position1" value="{{position[4]}}">
+                        <label for="position11" class="form-label">Postion 11:</label>
+                        <input type="hidden" name="position11" id="position11" value="{{selectedPlayers[11]}}">
                         
-                        <app-player-search (messageEvent)="getPos($event,4)"></app-player-search>
+                        <app-player-search (messageEvent)="getPos($event,11)" [players]="allPlayers"></app-player-search>
 
-                        <label for="position1" class="form-label">Postion 5:</label>
-                        <input type="hidden" name="position1" id="position1" value="{{position[5]}}">
-                        
-                        <app-player-search (messageEvent)="getPos($event,5)"></app-player-search>
-
-                        <label for="position1" class="form-label">Postion 6:</label>
-                        <input type="hidden" name="position1" id="position1" value="{{position[6]}}">
-                        
-                        <app-player-search (messageEvent)="getPos($event,6)"></app-player-search>
-
-                    </div>
-
-                    <div class="col col-lg-4">
-                      hello
-                    </div>
-                       
-                    <div class="col col-lg-4">
-                      <img src="../../../assets/big-stadium.png" class="img-fluid" alt="">
-                    </div>
-                    
-                </div>    
+                      </div>
+                         
+                      <div class="col col-lg-4">
+                        <img src="../../../assets/big-stadium.png" class="img-fluid" alt="">
+                      </div>
+                      
+                  </div>
+                   
             </div>    
 <!----------------------------------------------------------->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-primary" (click)="closeModal()">Save changes</button>
+          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="sendForm()">Save changes</button>
         </div>
       </div>
     </div>

@@ -8,14 +8,14 @@ import { TeamServices } from './team-services';
 })
 export class TeamsConsoleComponent implements OnInit {
 
-  @Input() captainID:number=3;
+  @Input() captainID:number=1;
 
   matchMakerOn: boolean = false;
   areThereTeams: boolean = true;
   teams: any[] = []; //teams is an empty array
 
   constructor(private teamServices: TeamServices) { }
-
+  
   ngOnInit(): void {
     this.getTeams();
     console.log('Component initialized');

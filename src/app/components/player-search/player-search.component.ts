@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PlayersService } from '../../services/player-services.service';
+
 
 @Component({
   selector: 'app-player-search',
@@ -9,7 +9,7 @@ import { PlayersService } from '../../services/player-services.service';
 })
 export class PlayerSearchComponent implements OnInit {
 
-  players:any[]=[];//this is the data table
+  @Input() players:any[]=[];
 
 //display selected value on console-------------------------
 /*onSelectionChange(val:number|null) {
@@ -18,10 +18,10 @@ export class PlayerSearchComponent implements OnInit {
 }
 */
 //Initiate the form and the service----------------------------------------------------
-constructor(private fb: FormBuilder,private playersService:PlayersService) {}
+constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.getPlayers();
+    
 
     this.frm = this.fb.group({
       'players': []
@@ -59,16 +59,6 @@ constructor(private fb: FormBuilder,private playersService:PlayersService) {}
 
   
 //this is the function to get players from the API-------------------
-  getPlayers():void{
-    this.playersService.getPlayersFromAPI().subscribe(
-      (data)=>{
-        this.players=data;
-      },
-      (error)=>{
-        console.error('Error fetching players:', error);
-      }
-
-    )
-  }
+  
 
 }
