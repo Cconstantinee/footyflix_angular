@@ -1,15 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit ,Input } from '@angular/core';
+import { TeamServices } from './team-services';
 
 @Component({
   selector: 'app-teams-console',
   templateUrl: './teams-console.component.html',
-  styleUrl: './teams-console.component.css'
+  styleUrls: ['./teams-console.component.css']
 })
-export class TeamsConsoleComponent {
-  matchMakerOn:boolean=false;
-  areThereTeams: boolean=true;
+export class TeamsConsoleComponent implements OnInit {
 
-  toggleMatchMaker(){
-    this.matchMakerOn=!this.matchMakerOn;
+  @Input() captainID:number=3;
+
+  matchMakerOn: boolean = false;
+  areThereTeams: boolean = true;
+  teams: any[] = []; //teams is an empty array
+
+  constructor(private teamServices: TeamServices) { }
+
+  ngOnInit(): void {
+    this.getTeams();
+    console.log('Component initialized');
+  }
+
+  getTeams(): void {
+    this.teamServices.getTeamsFromAPI(this.captainID).subscribe(
+      (data) => {
+        this.teams = data;
+      },
+      (error) => {
+        console.error('Error fetching teams:', error);
+      }
+    );
+  }
+
+  toggleMatchMaker() {
+    this.matchMakerOn = !this.matchMakerOn;
   }
 }

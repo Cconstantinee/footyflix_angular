@@ -23,15 +23,15 @@
             </div>
         <!--team manager console------------------------------------------------->    
             <div class="row">
-                <!--selection screen-->
-                <div class="col">
-                    <select class="form-select custom-select" aria-label="Default select example" [disabled]="!areThereTeams">
-                        <option selected>Select your team here</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                </div>
+        <!--selection screen--------------------------------------------->
+        <div class="col">                    
+            <select class="form-select custom-select" aria-label="Default select example" [disabled]="!areThereTeams">
+                <option value="select a team" disabled selected>select a team</option>
+                <option *ngFor="let team of teams" [value]="team.team_id">{{team.team_name}}</option>
+            </select>
+        </div>
+        
+
                 <!--display/edit screen-->
                 <div class="col">
 
@@ -46,8 +46,13 @@
         </div>
          <!--team creator console------------------------------------------------->   
             <div class="row">
-        
+                <div class="col p-3">
+                    <button class="btn w-100 bg-primary">Create new team</button>
+                </div>
+                <div class="col">
+                    
+                </div>
             </div>
             
-        </div>    
+        </div>
 </div>

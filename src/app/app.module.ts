@@ -16,6 +16,7 @@ import { TitleCardComponent } from './components/title-card/title-card.component
 import { NavigationDeckComponent } from './components/navigation-deck/navigation-deck.component';
 import { TeamsConsoleComponent } from './pages/teams-console/teams-console.component';
 import { MatchesConsoleComponent } from './pages/matches-console/matches-console.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { MatchesConsoleComponent } from './pages/matches-console/matches-console
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgSelectModule, FormsModule,ReactiveFormsModule
+    NgSelectModule, FormsModule,ReactiveFormsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
