@@ -1,9 +1,10 @@
 
-<form [formGroup]="frm" (ngSubmit)="onPost()">
+<form [formGroup]="frm">
+    <ng-select [(ngModel)]="selectedPlayer" formControlName="players" class="w-100" placeholder="Choose player" (change)="sendMessage(selectedPlayer)">
+        <ng-option aria-selected="true" disabled="true">Choose Player</ng-option>
+        <ng-option *ngFor="let player of players" [value]="player.user_id">{{player.psudo}}</ng-option>
+      </ng-select> 
 
-    <ng-select [(ngModel)]="selectedCar" formControlName="cars" class="w-100" (ngModelChange)="sendMessage()">
-        <ng-option *ngFor="let car of cars" [value]="car.id">{{car.name}}</ng-option>
-      </ng-select>
-      
-     <button class="btn w-100" type="submit">confirm</button>
 </form>
+
+<!--(ngModelChange)="sendMessage()"-->

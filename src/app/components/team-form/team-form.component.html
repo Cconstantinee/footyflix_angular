@@ -9,13 +9,47 @@
         </div>
         <div class="modal-body">
 <!----------------------------------------------------------->
-            <div class="container-fluid">
-                
+            <div class="container-fluid ">
+                <div class="row pt-2 m-2 pb-3 justify-content-center">
+                  <div class="col col-5">
+                    <label for="team_name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" placeholder="Enter your team name" required>
+                  </div>
+                </div>
                 <div class="row p-2">
 
                     <div class="col col-lg-4">
-                        hello
-                        <app-player-search></app-player-search>
+                        
+                        <label for="position1" class="form-label">Postion 1:</label>
+                        <input type="hidden" name="position1" id="position1" value="{{position[1]}}">
+                        
+                        <app-player-search (messageEvent)="getPos($event,1)"></app-player-search>
+
+                        <label for="position1" class="form-label">Postion 2:</label>
+                        <input type="hidden" name="position1" id="position1" value="{{position[2]}}">
+                        
+                        <app-player-search (messageEvent)="getPos($event,2)"></app-player-search>
+
+                        <label for="position1" class="form-label">Postion 3:</label>
+                        <input type="hidden" name="position1" id="position1" value="{{position[3]}}">
+                        
+                        <app-player-search (messageEvent)="getPos($event,3)"></app-player-search>
+
+                        <label for="position1" class="form-label">Postion 4:</label>
+                        <input type="hidden" name="position1" id="position1" value="{{position[4]}}">
+                        
+                        <app-player-search (messageEvent)="getPos($event,4)"></app-player-search>
+
+                        <label for="position1" class="form-label">Postion 5:</label>
+                        <input type="hidden" name="position1" id="position1" value="{{position[5]}}">
+                        
+                        <app-player-search (messageEvent)="getPos($event,5)"></app-player-search>
+
+                        <label for="position1" class="form-label">Postion 6:</label>
+                        <input type="hidden" name="position1" id="position1" value="{{position[6]}}">
+                        
+                        <app-player-search (messageEvent)="getPos($event,6)"></app-player-search>
+
                     </div>
 
                     <div class="col col-lg-4">

@@ -7,6 +7,9 @@ import { Component ,OnInit} from '@angular/core';
 })
 export class TeamFormComponent {
   display = "none";
+  position=new Array<number|null>(11);
+  
+
   ngOnInit() {
    }
 openModal() {
@@ -14,5 +17,8 @@ openModal() {
   }
   closeModal() {
     this.display = "none";
+  }
+  getPos($event: number | null,position:number){
+    this.position[position]=$event;
   }
 }
