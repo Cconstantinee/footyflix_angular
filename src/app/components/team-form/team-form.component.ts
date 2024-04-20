@@ -1,5 +1,7 @@
 import { Component, OnInit,Input, } from '@angular/core';
 import { PlayersService } from '../../services/player-services.service';
+import { TeamsService } from '../../services/teams.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,9 +17,10 @@ export class TeamFormComponent implements OnInit {
   
 
   team_name:string='';
-  constructor(private playersService: PlayersService) { }
+  constructor(private playersService: PlayersService, private teamsService:TeamsService,private router:Router) { }
 
   ngOnInit() {
+    
     this.getPlayers(); // Fetch players when component initializes
   }
 
@@ -62,21 +65,30 @@ export class TeamFormComponent implements OnInit {
     this.getPlayers(); // Update player list whenever a player is selected
   }
   sendForm(){
-    this.selectedPlayers[0]=this.team_name;
-    if((this.selectedPlayers.length<7)||(!this.selectedPlayers.includes(this.Captain_ID))||(this.team_name=='')){
+    
+    if((this.selectedPlayers.length%2!=0)||(!this.selectedPlayers.includes(this.Captain_ID))||(this.team_name=='')){
       console.log("form not complete!");
-      alert("insufficent number of players, missing a name or you forgot yourself");
+      alert("insufficent number of players, missing a name or you forgot yourself (this is a placeholder text)");
     }
     else{
-      console.log("form submitted ",this.selectedPlayers);
-    this.playersService.sendNewTeamToAPI(this.selectedPlayers).subscribe(
+      this.selectedPlayers[0]=this.team_name;
       
-    )
+      this.teamsService.sendNewTeamToAPI(this.selectedPlayers,this.Captain_ID).subscribe(
+        (data) => {
+          console.log("teamsAPI response", data);
+        },
+        (error) => {
+          console.log("Error sending team to API:", error);
+          
+        }
+      )
+      console.log("form submitted ",this.selectedPlayers);
+      this.closeModal();
     }
   }
-  onReset(){
-    
-  }
+  reloadComponent() {
+    this.router.navigate([this.router.url]);
+}
  
   
 }
