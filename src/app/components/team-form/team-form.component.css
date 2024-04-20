@@ -82,3 +82,16 @@
   animation: lightenBackground 0.3s forwards;
 }
 
+button.this-form-btn{
+  color:white;
+  background-color: #253738;
+  border:none;
+}
+
+button.this-form-btn:hover{
+  border-color: white;
+  background-color: teal;
+  color:white;
+  border:white;
+}
+

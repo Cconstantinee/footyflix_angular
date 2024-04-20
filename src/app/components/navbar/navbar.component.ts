@@ -7,7 +7,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class NavbarComponent {
   @Output() clickEvent=new EventEmitter<string>();
-  main_clicked(){
-    this.clickEvent.emit('open_main_page');
+  main_clicked(message:string){
+
+    this.clickEvent.emit(message);
   }
 }

@@ -21,6 +21,7 @@ import { MatchesConsoleComponent } from './pages/matches-console/matches-console
 import { HttpClientModule } from '@angular/common/http';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import {PlayersService} from './services/player-services.service';
+import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import {PlayersService} from './services/player-services.service';
     TeamsConsoleComponent,
     MatchesConsoleComponent,
     TeamFormComponent,
+    LoginRegisterComponent,
     
     
   ],

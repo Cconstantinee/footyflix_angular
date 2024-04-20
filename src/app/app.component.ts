@@ -22,6 +22,9 @@ export class AppComponent {
         this.title_varient='front_title';
         
         break;
+      case 'open-login' :
+        this.title_varient='login-register';
+      break;
       default:
         break;
     }

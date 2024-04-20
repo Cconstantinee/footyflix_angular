@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-info btn-lg w-100" (click)="openModal()">New team</button>
+<button type="button" class="btn btn-info btn-lg w-100 this-form-btn" (click)="openModal()">New team</button>
 
 <div class="modal shadow darken-background " tabindex="-1" [ngClass]="{'hide': display}" [ngStyle]="{'display': display}">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -14,7 +14,7 @@
                   <div class="row pt-2 m-2 pb-3 justify-content-center">
                     <div class="col col-5">
                       <label for="team_name" class="form-label">Name:</label>
-                      <input type="text" class="form-control" name="team_name" [(ngModel)]="team_name" placeholder="Enter your team name" required>
+                      <input type="text" class="form-control bg-none" name="team_name" [(ngModel)]="team_name" placeholder="Enter your team name" required>
                     </div>
                   </div>
                   <div class="row p-2">
