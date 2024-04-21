@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import {PlayersService} from './services/player-services.service';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
+import { TeamViewerComponent } from './components/team-viewer/team-viewer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
     MatchesConsoleComponent,
     TeamFormComponent,
     LoginRegisterComponent,
+    TeamViewerComponent,
     
     
   ],

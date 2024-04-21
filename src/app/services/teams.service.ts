@@ -15,4 +15,9 @@ export class TeamsService {
     
     return this.http.post<any[]>(this.ROOT_URL,{'captainID':Captain_ID,'teamDetails':data});
   }
+
+  deleteTeamByAPI(team_id:number|null): Observable<any[]>{
+    const url = `${this.ROOT_URL}?team_id=${team_id}`;
+    return this.http.delete<any[]>(url);
+  }
 }

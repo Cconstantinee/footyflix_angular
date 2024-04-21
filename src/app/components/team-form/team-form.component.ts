@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter} from '@angular/core';
 import { PlayersService } from '../../services/player-services.service';
 import { TeamsService } from '../../services/teams.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ export class TeamFormComponent implements OnInit {
   allPlayers: any[] = [];
   selectedPlayers: (number | null |string)[] = new Array<number | null|string>;
   @Input() Captain_ID:number=0;
-  
+  @Output() messageEvent = new EventEmitter<string>();
 
   team_name:string='';
   constructor(private playersService: PlayersService, private teamsService:TeamsService,private router:Router) { }
@@ -52,12 +52,10 @@ export class TeamFormComponent implements OnInit {
   }
   
 
-  openModal() {
-    this.display = "block";
-  }
+  
 
   closeModal() {
-    this.display = "none";
+    this.messageEvent.emit("close_form");
   }
 
   getPos($event: number | null, position: number) {
@@ -83,6 +81,7 @@ export class TeamFormComponent implements OnInit {
         }
       )
       console.log("form submitted ",this.selectedPlayers);
+      this.messageEvent.emit("refresh_team_table");
       this.closeModal();
     }
   }
