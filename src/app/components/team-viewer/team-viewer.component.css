@@ -1,3 +1,12 @@
 .btn{
     color:white;
 }
+
+.card{
+    background-color: #253738;
+    border-color: white;
+}
+.card-body{
+    
+    color:white;
+}

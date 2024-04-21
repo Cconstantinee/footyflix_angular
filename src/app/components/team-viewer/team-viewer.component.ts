@@ -13,6 +13,7 @@ export class TeamViewerComponent {
   @Input() team_id:number|null=null;
   @Input() team_name:string='';
   @Input() captain_id:number|null=null;
+  captain_name:string='user1';
 
   constructor(private teamsService:TeamsService){}
   editTeam() {

@@ -35,9 +35,9 @@
         </div>
         {{selectedTeamId}}
         <!--display/edit screen------------------------------------------>
-                <div class="col">
-                    <img *ngIf="selectedTeamId==0" src="../../../assets/background-gola(1).png" height="250" alt="">
-                    <div class="p-2">
+                <div class="col " style="">
+                    <div class="z-0"><img src="../../../assets/background-gola(1).png" height="250" alt=""></div>
+                    <div class="p-2 z-1 position-absolute bottom-50 start-50">
                         <app-team-viewer *ngIf="selectedTeamId!=0" [team_id]="selectedTeamId" [team_name]="selectedTeamName" [captain_id]="captainID"></app-team-viewer>
                     </div>
                 </div>
