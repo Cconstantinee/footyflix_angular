@@ -25,6 +25,7 @@ import { LoginRegisterComponent } from './pages/login-register/login-register.co
 import { TeamViewerComponent } from './components/team-viewer/team-viewer.component';
 import { TeamCardComponent } from './components/team-card/team-card.component';
 import { BackdropComponent } from './pages/backdrop/backdrop.component';
+import { WallpapersComponent } from './pages/wallpapers/wallpapers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { BackdropComponent } from './pages/backdrop/backdrop.component';
     TeamViewerComponent,
     TeamCardComponent,
     BackdropComponent,
+    WallpapersComponent,
     
     
   ],
