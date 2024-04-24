@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,OnInit } from '@angular/core';
 import { TeamsService } from '../../services/teams.service';
 
 @Component({
@@ -10,10 +10,12 @@ export class TeamViewerComponent {
 
 
   
-  @Input() team_id:number|null=null;
+  @Input() team_id:number=0;
   @Input() team_name:string='';
   @Input() captain_id:number|null=null;
   captain_name:string='user1';
+  players: any[]=[1,2,3,4,5,6,7,8,9];
+  
 
   constructor(private teamsService:TeamsService){}
   editTeam() {
@@ -45,5 +47,15 @@ export class TeamViewerComponent {
         console.log('Deletion canceled by user.');
       }
     }
+    getTeamPlayers(){
+      this.teamsService.getTeamPlayersByAPI(this.team_id).subscribe(
+        (data)=>{
+          this.players=data;
+          console.log("player details",this.players);
+        },
+        (error)=>{console.log("problem getting team players:",error)}
+      )
+    }
+    
     
 }

@@ -3,10 +3,24 @@
 }
 
 .card{
-    background-color: #253738;
-    border-color: white;
+    background: linear-gradient(to top,#253738,rgba(240, 240, 240, 0));
+    
+    border:none;
+    border-radius: 12px;
 }
 .card-body{
     
     color:white;
 }
+.table.table-borderless {
+    background-color: transparent; /* Set background color to transparent */
+  }
+
+  .table.table-borderless th,
+  .table.table-borderless td {
+    background-color: transparent; /* Set background color of table cells to transparent */
+    line-height: 1;
+    color:white;
+  }
+
+

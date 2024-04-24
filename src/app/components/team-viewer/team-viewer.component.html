@@ -1,8 +1,54 @@
 
 
 
-<div class="card shadow-sm" style="width: 18rem;">
-    <img src="../../../assets/formation pattern(1).png" class="card-img-top" alt="...">
+<div class="card shadow " style="">
+  <div class="image-container">
+    <img src="../../../assets/formation-pattern.svg" class="card-img-top" height="" alt="...">
+    <div class="z-1 position-absolute top-0 left-0 d-flex justify-content-between justify-items-center" style="height: 80%;width:100%;">
+      <table class="table table-borderless" style="background-color:transparent;">
+        <thead>
+          
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><p class="fw-bold">Postion 10:</p>p{{players[10]}}</td>
+            <td><p class="fw-bold">Postion 11:</p>p{{players[11]}}</td>
+            <td></td>
+          </tr>
+          <tr>
+            
+            <td colspan="2"><p class="fw-bold">Postion 8:</p>{{players[8]}}</td>
+            <td colspan="2"><p class="fw-bold">Postion 9:</p>{{players[9]}}</td>
+            
+          </tr>
+          <tr>
+            <td></td>
+            <td><p class="fw-bold">Postion 6:</p>{{players[6]}}</td>
+            <td><p class="fw-bold">Postion 7:</p>{{players[7]}}</td>
+            <td></td>
+            
+          </tr>
+          <tr>
+            
+            <td><p class="fw-bold">Postion 2:</p>{{players[2]}}</td>
+            <td><p class="fw-bold">Postion 3:</p>{{players[3]}}</td>
+            <td><p class="fw-bold">Postion 4:</p>{{players[4]}}</td>
+            <td><p class="fw-bold">Postion 5:</p>{{players[5]}}</td>
+            
+          </tr>
+          <tr>
+            
+            <td colspan="4"><p class="fw-bold">Postion 1:</p>{{players[1]}}</td>
+            
+            
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+    
     <div class="card-body text-end">
       <h2 class="card-title fw-light">{{team_name}}</h2>
       <p class="card-text fw-light">A team by {{captain_name}}.</p>
@@ -11,6 +57,6 @@
         <button class="btn bg-secondary btn-sm " (click)="editTeam()">Edit</button>
         <button class="btn bg-danger btn-sm" (click)="deleteTeam()">Delete</button>
     </div>  
-      
+      <button class="btn" (click)="getTeamPlayers()">load players</button>
     </div>
   </div>

@@ -16,4 +16,5 @@ export class PlayersService {
     let params = new HttpParams();
     return this.http.get<any[]>(this.ROOT_URL);
   }
+  
 }
