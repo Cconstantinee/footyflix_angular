@@ -3,7 +3,7 @@
     margin: 0 auto; /* Set left and right margins to auto */
     
     padding: 20px;
-
+    z-index:1;
     
   }
 
