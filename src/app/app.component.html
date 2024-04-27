@@ -2,9 +2,9 @@
 <!--{{title_varient}}-->
 <!--{{ConsolesActive}}-->
 <body>
-    <app-wallpapers *ngIf="true" [title]="title_varient"></app-wallpapers>
+    <app-wallpapers *ngIf="true" [title]="wallpaperSwitch()"></app-wallpapers>
     <div class="container z-1 position-relative" *ngIf="title_varient!='login-register'">
-        <button>hello</button>
+        
         <div class="row px-2 py-4" style="color: #253738; border: #253738;border-radius: 1px;">
             <app-title-card [title_varient]="title_varient" [consoleActive]="ConsolesActive"></app-title-card>
 
@@ -30,10 +30,10 @@
             </div>
         </div>
         <!--console 1---------------------------------------------------------------------------->
-    <app-teams-console *ngIf="title_varient=='teams_console_title'"></app-teams-console>
+    <app-teams-console *ngIf="title_varient=='teams_console_title'" (message)="handleMessages($event)"></app-teams-console>
     
     </div>
-    <div class="container">
+    <div class="container z-1 position-relative">
         <app-login-register *ngIf="title_varient=='login-register'"></app-login-register>
     </div>
 </body>
