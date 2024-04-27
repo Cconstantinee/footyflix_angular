@@ -20,4 +20,5 @@ export class TeamsService {
     const url = `${this.ROOT_URL}?team_id=${team_id}`;
     return this.http.delete<any[]>(url);
   }
+  
 }

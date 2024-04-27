@@ -16,4 +16,10 @@ export class PlayersService {
     let params = new HttpParams();
     return this.http.get<any[]>(this.ROOT_URL);
   }
+  sendNewUserToAPI(userData: any): Observable<any> {
+    // Envoie la nouvelle utilisateur à l'API en utilisant HTTP POST
+    return this.http.post<any>(this.ROOT_URL, userData);
+  }
+
+  
 }
