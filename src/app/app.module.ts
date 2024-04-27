@@ -26,6 +26,9 @@ import { TeamViewerComponent } from './components/team-viewer/team-viewer.compon
 import { TeamCardComponent } from './components/team-card/team-card.component';
 import { BackdropComponent } from './pages/backdrop/backdrop.component';
 import { WallpapersComponent } from './pages/wallpapers/wallpapers.component';
+import { AdminToggleComponent } from './components/admin-toggle/admin-toggle.component';
+import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +49,9 @@ import { WallpapersComponent } from './pages/wallpapers/wallpapers.component';
     TeamCardComponent,
     BackdropComponent,
     WallpapersComponent,
+    AdminToggleComponent,
+    ProfileViewComponent,
+    ProfilePageComponent,
     
     
   ],

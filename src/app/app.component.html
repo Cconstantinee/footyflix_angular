@@ -2,9 +2,9 @@
 <!--{{title_varient}}-->
 <!--{{ConsolesActive}}-->
 <body>
-    <app-wallpapers *ngIf="true"></app-wallpapers>
-    <div class="container" *ngIf="title_varient!='login-register'">
-        
+    <app-wallpapers *ngIf="true" [title]="title_varient"></app-wallpapers>
+    <div class="container z-1 position-relative" *ngIf="title_varient!='login-register'">
+        <button>hello</button>
         <div class="row px-2 py-4" style="color: #253738; border: #253738;border-radius: 1px;">
             <app-title-card [title_varient]="title_varient" [consoleActive]="ConsolesActive"></app-title-card>
 
