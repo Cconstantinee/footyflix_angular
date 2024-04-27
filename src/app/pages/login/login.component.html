@@ -1,12 +1,12 @@
 <div class="container-fluid d-flex justify-content-center align-items-center">
-  <div id="loginSection" class="wrapper" [class.active]="isActive">
+  <div class="wrapper" [class.active]="isActive">
     <span class="bg-animate"></span>
     <span class="bg-animate2"></span>
-    <div class="from-box login">
+    <div class="from-box login" [class.active]="isActive">
       <h2 class="animation" style="--i: 1;">Login</h2>
       <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
         <div class="input-box animation" style="--i: 1;">
-          <input type="text" required [(ngModel)]="username" name="username">
+          <input type="text" required [(ngModel)]="username"  name="username">
           <label for="">Username</label>
           <i class='bx bxs-user-rectangle'></i>
         </div>
@@ -23,12 +23,12 @@
         </div>
       </form>
     </div>
-    <div class="info-text login">
+    <div class="info-text login" [class.active]="isActive" >
       <h2 class="animation" style="--i: 0;">Welcome Back!</h2>
       <p class="animation" style="--i: 1;">lorem ipsum, dolor sit amet consectetur adipisicing.</p>
     </div>
-    <div class="from-box register">
-      <h2 class="animation" style="--i: 17; --j:0;" >Sign Up</h2>
+    <div class="from-box register" [class.active]="isActive">
+      <h2 class="animation" style="--i: 17; --j:0;">Sign Up</h2>
       <form action="#">
         <div class="input-box animation" style="--i: 18; --j:1;">
           <input type="text" required>
@@ -36,7 +36,7 @@
           <i class='bx bxs-user-rectangle'></i>
         </div>
         <div class="input-box animation" style="--i: 19; --j:2;">
-          <input type="email" required> <!-- Changed type to email -->
+          <input type="email" required>
           <label for="">Email</label>
           <i class='bx bxs-envelope'></i>
         </div>
@@ -47,7 +47,7 @@
         </div>
         <button type="submit" class="btn animation" style="--i: 21; --j:4;">Sign Up</button>
         <div class="logreg-link animation" style="--i: 22; --j:5;">
-          <p>Already have an account ? <a href="#" class="login-link">Login</a></p>
+          <p>Already have an account ? <a href="#" class="login-link" >Login</a></p>
         </div>
       </form>
     </div>

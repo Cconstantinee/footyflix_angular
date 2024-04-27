@@ -20,6 +20,7 @@ export class PlayersService {
     // Envoie la nouvelle utilisateur à l'API en utilisant HTTP POST
     return this.http.post<any>(this.ROOT_URL, userData);
   }
-
-  
+  getcurrentuserFromAPI(data: any): Observable<any> {
+    return this.http.post<any>(this.ROOT_URL, data);
+}
 }
