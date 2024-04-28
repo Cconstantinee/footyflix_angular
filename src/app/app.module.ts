@@ -27,6 +27,7 @@ import { TeamCardComponent } from './components/team-card/team-card.component';
 import { BackdropComponent } from './pages/backdrop/backdrop.component';
 import { WallpapersComponent } from './pages/wallpapers/wallpapers.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ProfilComponent } from './profil/profil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { LoginComponent } from './pages/login/login.component';
     BackdropComponent,
     WallpapersComponent,
     LoginComponent,
+    ProfilComponent,
     
     
   ],
