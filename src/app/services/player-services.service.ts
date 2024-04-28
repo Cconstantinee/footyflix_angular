@@ -23,4 +23,9 @@ export class PlayersService {
   getcurrentuserFromAPI(data: any): Observable<any> {
     return this.http.post<any>(this.ROOT_URL, data);
 }
+
+updatePlayerInAPI(user_id: number, userData: any): Observable<any> {
+  let params = new HttpParams().set('user_id', user_id.toString());
+  return this.http.post<any>(`${this.ROOT_URL}?action=update`, userData, { params: params });
+}
 }
