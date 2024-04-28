@@ -6,10 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+
   title = 'footyflix_angular';
   imageUrl: string = '';
   title_varient:string='front_title';
-  
+  matchMakerOn:boolean=false;
+
   ConsolesActive: boolean=false;
 
   handleButtons(input:string){
@@ -29,5 +32,17 @@ export class AppComponent {
         break;
     }
   }
+
+  handleMessages($event: any) {
+    this.matchMakerOn=$event;
   
+  }
+wallpaperSwitch(): string {
+    if(this.matchMakerOn){
+      return 'match_maker-console';
+    }
+    else{
+      return this.title_varient;
+    }
+  }
 }

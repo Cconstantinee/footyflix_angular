@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,OnInit, SimpleChanges } from '@angular/core';
 import { TeamsService } from '../../services/teams.service';
 
 @Component({
@@ -10,10 +10,22 @@ export class TeamViewerComponent {
 
 
   
-  @Input() team_id:number|null=null;
+  @Input() team_id:number=0;
   @Input() team_name:string='';
   @Input() captain_id:number|null=null;
   captain_name:string='user1';
+  players: any[]=[];
+  ngOnInit(): void {
+    // Call getTeamPlayers when component is loaded
+    this.getTeamPlayers();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // Call getTeamPlayers when team_id changes
+    if (changes['team_id'] && !changes['team_id'].firstChange) {
+      this.getTeamPlayers();
+    }
+  }
 
   constructor(private teamsService:TeamsService){}
   editTeam() {
@@ -45,5 +57,23 @@ export class TeamViewerComponent {
         console.log('Deletion canceled by user.');
       }
     }
+    getTeamPlayers(){
+      this.teamsService.getTeamPlayersByAPI(this.team_id).subscribe(
+        (data)=>{
+          this.players=data.map(data=>({
+            user_id:data.user_id,
+            psudo:data.psudo,
+            position:data.position
+          }));
+          console.log("player details",this.players);
+        },
+        (error)=>{console.log("problem getting team players:",error)}
+      )
+    }
+    getPsudoByPosition(position: number): string {
+      const player = this.players.find(item => item.position === position);
+      return player ? player.psudo : 'Not Found';
+    }
+    
     
 }

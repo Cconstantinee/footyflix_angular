@@ -7,3 +7,12 @@
     
   }
 
+.front-container{
+  /*background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-image: url('../assets/stadium_lights.png');
+    background-position: center;*/
+    border-radius: 16px;background:linear-gradient(to top, #f8f9fa, rgba(248, 249, 250, 0.1));backdrop-filter: blur(10px);
+}

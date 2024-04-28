@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input } from '@angular/core';
+import { Component, OnInit ,Input,Output, EventEmitter } from '@angular/core';
 import { TeamServices } from './team-services';
 
 
@@ -10,7 +10,7 @@ import { TeamServices } from './team-services';
 })
 export class TeamsConsoleComponent implements OnInit {
 
-
+  @Output() message=new EventEmitter();
   @Input() captainID:number=1;
 
   matchMakerOn: boolean = false;
@@ -43,6 +43,7 @@ export class TeamsConsoleComponent implements OnInit {
 
   toggleMatchMaker() {
     this.matchMakerOn = !this.matchMakerOn;
+    this.message.emit(this.matchMakerOn);
   }
   toggleForm(){
     this.showForm=!this.showForm;

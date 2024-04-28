@@ -56,3 +56,10 @@
     filter: invert(1); /* Invert the arrow color */
   }
   
+  #team_view{
+    height: "";
+    background-image: url("../../../assets/background-gola(1).png");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }

@@ -28,6 +28,10 @@ import { BackdropComponent } from './pages/backdrop/backdrop.component';
 import { WallpapersComponent } from './pages/wallpapers/wallpapers.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfilComponent } from './profil/profil.component';
+import { AdminToggleComponent } from './components/admin-toggle/admin-toggle.component';
+import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { LoginWallpaperComponent } from './components/login-wallpaper/login-wallpaper.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +54,10 @@ import { ProfilComponent } from './profil/profil.component';
     WallpapersComponent,
     LoginComponent,
     ProfilComponent,
+    AdminToggleComponent,
+    ProfileViewComponent,
+    ProfilePageComponent,
+    LoginWallpaperComponent,
     
     
   ],

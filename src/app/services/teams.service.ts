@@ -21,4 +21,9 @@ export class TeamsService {
     return this.http.delete<any[]>(url);
   }
   
+
+  getTeamPlayersByAPI(team_id:number):Observable<any[]>{
+    const params=new HttpParams().set('team_id',team_id.toString());
+    return this.http.get<any[]>(this.ROOT_URL,{params});
+  }
 }
