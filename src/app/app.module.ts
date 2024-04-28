@@ -29,6 +29,7 @@ import { WallpapersComponent } from './pages/wallpapers/wallpapers.component';
 import { AdminToggleComponent } from './components/admin-toggle/admin-toggle.component';
 import { ProfileViewComponent } from './pages/profile-view/profile-view.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { LoginWallpaperComponent } from './components/login-wallpaper/login-wallpaper.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     AdminToggleComponent,
     ProfileViewComponent,
     ProfilePageComponent,
+    LoginWallpaperComponent,
     
     
   ],

@@ -1,13 +1,73 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-wallpapers',
   templateUrl: './wallpapers.component.html',
-  styleUrl: './wallpapers.component.css'
+  styleUrl: './wallpapers.component.css',
+  animations: [
+    trigger('backgroundChange', [
+      transition(':increment', [
+        animate('1s ease-in-out', style({
+          backgroundImage: '{{ newImage }}'
+        }))
+      ])
+    ])
+  ]
+
 })
-export class WallpapersComponent {
+export class WallpapersComponent implements OnInit{
+  second_container_images = [
+    '../../../assets/stadium_background2.png',
+    '../../../assets/image15.png',
+    '../../../assets/image19.png'
+  ];
+  first_container_images = [
+    '../../../assets/stadium_background2.png',
+    
+    '../../../assets/image18.png',
+    
+    '../../../assets/image17.png'
+    
+  ];
+  currentImageIndex1: number = 0;
+  currentImageIndex2: number = 0;
+  intervalId: any;
+  empty:string="";
+
+  constructor() { }
+
+  ngOnInit() {
+    this.startFirstCycle();
+    console.log("first cycle started");
+    setTimeout(() => {
+      this.startSecondCycle();
+      console.log("second cycle started");
+      this.second_container_images[0]='../../../assets/image16.png';
+    }, 5000);
+  }
+  
+  startFirstCycle() {
+    this.intervalId = setInterval(() => {
+      this.currentImageIndex1 = (this.currentImageIndex1 + 1) % this.first_container_images.length;
+    }, 10000); // Change interval value to adjust cycle speed (in milliseconds)
+  }
+  startSecondCycle(){
+    this.intervalId = setInterval(() => {
+      this.currentImageIndex2 = (this.currentImageIndex2 + 1) % this.second_container_images.length;
+    }, 10000); // Change interval value to adjust cycle speed (in milliseconds)
+  }
+
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
+
   @Input() title:string='default';
-  display_image:string='../../../assets/stadium_lights.png';
+  display_image:string='../../../assets/captain-background.png';
 
   setImage(){
     switch (this.title) {

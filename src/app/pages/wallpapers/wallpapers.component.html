@@ -1,15 +1,37 @@
-<div class="image-container bg-image d-flex z-0 position-absolute top-0 end-0 justify-content-end">
-    <img [src]="display_image" class="img-fluid" style="height: 50vh;opacity: 0.2; transform: translate(10px,10px);" alt="">
-</div>
-<div class="image-container bg-image d-flex z-0 position-absolute top-0 start-0 justify-content-start">
-    <img src="../../../assets/back-goal2.svg" class="img-fluid" style="height:40vh;opacity: 0.5; transform: translate(10px,10px);" alt="">
-</div>
+<div *ngIf="title!='login-register'&&title!='front_title'">
+    <div *ngIf="title!='login-register'" class="image-container bg-image d-flex z-1 position-absolute top-0 end-0 justify-content-end">
+        <img [src]="display_image" class="img-fluid" style="height: 50vh;opacity: 0.2; transform: translate(20px,20px);" alt="">
+    </div>
+    <div *ngIf="title!='login-register'" class="image-container bg-image d-flex z-0 position-absolute top-0 start-0 justify-content-start">
+        <img src="../../../assets/back-goal2.svg" class="img-fluid" style="height:40vh;opacity: 0.5; transform: translate(20px,20px);" alt="">
+    </div>
 
 
-
-
-<div class="container-fluid px-0 z-0 position-relative justify-content-center d-flex" style="" >
-    
 </div>
 
-<!--*ngIf="title=='login_console'"-->
+
+
+
+<div *ngIf="title=='front_title'">
+    <div class="image-container bg-image d-flex z-3 position-absolute bottom-0 end-0 justify-content-end">
+        <img src="../../../assets/stadium_lights.png" class="img-fluid" style="height: 65vh;opacity: 0.2; transform: translate(100px,50px);" alt="">
+    </div>
+    <div class="image-container bg-image d-flex z-0 position-absolute bottom-0 start-0 justify-content-start">
+        <img src="../../../assets/back-goal2.svg" class="img-fluid" style="height:40vh;opacity: 0.5; transform: translate(-50px,20px);" alt="">
+    </div>
+    <div class="container-fluid px-0 z-1 position-absolute justify-content-center d-flex first-container"
+[ngStyle]="{ 'background-image': 'url(' + first_container_images[currentImageIndex1] + ')' }" >
+  <!-- Content of your component -->
+</div>
+<div class="container-fluid px-0 z-0 position-absolute justify-content-center d-flex secound-container "
+[ngStyle]="{ 'background-image': 'url(' + second_container_images[currentImageIndex2] + ')' }">
+  <!-- Content of your component -->
+</div>
+<div class="container-fluid px-0 z-2 position-absolute justify-content-center d-flex" style="background:linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));">
+  <!-- Content of your component -->
+</div>
+<div>{{first_container_images[currentImageIndex1]}}</div>
+</div>
+
+
+
