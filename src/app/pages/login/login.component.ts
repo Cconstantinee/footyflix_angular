@@ -36,4 +36,5 @@ export class LoginComponent implements OnInit {
   toggleActive(value: boolean) {
     this.isActive = value;
   }
+  
 }
