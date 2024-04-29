@@ -1,9 +1,12 @@
 <nav class="navbar bg-body-tertiary z-1">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;" (click)="main_clicked('open_main_page')">FOOTYFLIX</a>
+      <button class="btn btn-admin border-success" style="width: 20%;">
+      Admin<img src="../../../assets/admin_logo.jpg" style="height: 30px;" alt="">Access
+      </button>
       <div>
         <button class="btn btn-sm" (click)="main_clicked('open-login')">login/register</button>
-      <button class="btn" style="display: inline-block;">
+      <button class="btn" style="display: inline-block;" (click)="main_clicked('open_profile')">
         <img src="../../../assets/person(1).png" height="30" alt="">
       </button>
       </div>

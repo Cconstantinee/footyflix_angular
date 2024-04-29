@@ -12,7 +12,8 @@ export class AppComponent {
   imageUrl: string = '';
   title_varient:string='front_title';
   matchMakerOn:boolean=false;
-
+  
+  
   ConsolesActive: boolean=false;
 
   handleButtons(input:string){
@@ -23,13 +24,18 @@ export class AppComponent {
         break;
       case 'open_main_page' :
         this.title_varient='front_title';
-        
+        console.log("title_variant changed: ",this.title_varient);
         break;
       case 'open-login' :
         this.title_varient='login-register';
       break;
+      case 'open_profile':
+        this.title_varient="profile_page";
+        
+        break;
       default:
         break;
+        
     }
   }
 
@@ -45,4 +51,5 @@ wallpaperSwitch(): string {
       return this.title_varient;
     }
   }
+
 }

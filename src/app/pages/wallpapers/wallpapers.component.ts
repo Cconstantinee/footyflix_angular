@@ -1,4 +1,4 @@
-import { Component,Input,OnInit } from '@angular/core';
+import { Component,Input,OnInit, SimpleChanges } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { interval } from 'rxjs';
 
@@ -70,6 +70,7 @@ export class WallpapersComponent implements OnInit{
   display_image:string='../../../assets/captain-background.png';
 
   setImage(){
+    console.log("seting new image",this.title);
     switch (this.title) {
       case 'front_title':
         this.display_image='../../../assets/stadium_lights.png';
@@ -89,11 +90,20 @@ export class WallpapersComponent implements OnInit{
         case 'tournament_console':
           this.display_image='../../../assets/match-background.png';
           break;
-        case 'profile_console':
-          this.display_image='../../../assets/match-background.png';
+        case 'profile_page':
+          this.display_image='../../../assets/profile_backdrop.png';
+          console.log("image set");
           break;
       default:
         break;
     }
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['title']) {
+      // Do something when myVariable changes
+      console.log('myVariable changed:', this.title);
+      this.setImage();
+    }
+  }
 }
+

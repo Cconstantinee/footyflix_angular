@@ -1,9 +1,9 @@
-<app-navbar (clickEvent)="handleButtons($event)"></app-navbar>
+<app-navbar (clickEvent)="handleButtons($event)" *ngIf="title_varient!='login-register'"></app-navbar>
 <!--{{title_varient}}-->
 <!--{{ConsolesActive}}-->
 <body>
     <app-wallpapers *ngIf="true" [title]="wallpaperSwitch()"></app-wallpapers>
-    <app-login-register *ngIf="title_varient=='login-register'"></app-login-register>
+    <app-login-register *ngIf="title_varient=='login-register'" (messageEvent)="handleButtons($event)"></app-login-register>
     <div class="container z-3 position-relative shadow pb-5 mt-5 front-container fade-in-bottom" *ngIf="title_varient=='front_title'" style="">
         
         <div class="row px-2 py-2" style="color: #253738; border: #253738;border-radius: 1px;">
@@ -11,7 +11,7 @@
 
             
         </div>
-        <app-navigation-deck [ConsolesActive]="ConsolesActive"></app-navigation-deck>
+        <app-navigation-deck [ConsolesActive]="false"></app-navigation-deck>
 
         <!----------------------------------------------------------------------------------------->
         <div class="divider-dark my-2"></div>
@@ -36,9 +36,12 @@
     </div>
     <div class="container z-1 position-relative" *ngIf="title_varient=='teams_console_title'">
         <app-title-card [title_varient]="title_varient" [consoleActive]="ConsolesActive"></app-title-card>
-        <app-navigation-deck [ConsolesActive]="ConsolesActive"></app-navigation-deck>
+        <app-navigation-deck [ConsolesActive]="true"></app-navigation-deck>
         <div class="divider-dark my-2"></div>
         <app-teams-console (message)="handleMessages($event)"></app-teams-console>
+    </div>
+    <div class="container z-1 position-relative fade-in-bottom" *ngIf="title_varient=='profile_page'">
+        <app-profil></app-profil>
     </div>
     
 </body>
