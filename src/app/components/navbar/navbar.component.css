@@ -1,0 +1,17 @@
+.btn-admin {
+    border: none; 
+    transition: box-shadow 0.3s;
+    width: 20%;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-admin:hover {
+    border: 1px solid #ddd; 
+    box-shadow: 0 0 10px rgba(124, 241, 140, 0.5); 
+}
+
+.btn-admin img {
+    height: 30px;
+    mix-blend-mode: darken; /* Example of blend mode */
+}

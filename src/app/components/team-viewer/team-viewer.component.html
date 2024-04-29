@@ -1,8 +1,54 @@
 
 
 
-<div class="card shadow-sm" style="width: 18rem;">
-    <img src="../../../assets/formation pattern(1).png" class="card-img-top" alt="...">
+<div class="card shadow fade-in-and-rise " style="">
+  <div class="image-container">
+    <img src="../../../assets/formation-pattern.svg" class="card-img-top" height="" alt="...">
+    <div class="z-1 position-absolute top-0 left-0 d-flex justify-content-between justify-items-center" style="height: 80%;width:100%;">
+      <table class="table table-borderless" style="background-color:transparent;">
+        <thead>
+          
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><p class="fw-bold">Postion 10:</p>{{getPsudoByPosition(10)}}</td>
+            <td><p class="fw-bold">Postion 11:</p>{{getPsudoByPosition(11)}}</td>
+            <td></td>
+          </tr>
+          <tr>
+            
+            <td colspan="2"><p class="fw-bold">Postion 8:</p>{{getPsudoByPosition(8)}}</td>
+            <td colspan="2"><p class="fw-bold">Postion 9:</p>{{getPsudoByPosition(9)}}</td>
+            
+          </tr>
+          <tr>
+            <td></td>
+            <td><p class="fw-bold">Postion 6:</p>{{getPsudoByPosition(6)}}</td>
+            <td><p class="fw-bold">Postion 7:</p>{{getPsudoByPosition(7)}}</td>
+            <td></td>
+            
+          </tr>
+          <tr>
+            
+            <td><p class="fw-bold">Postion 2:</p>{{getPsudoByPosition(2)}}</td>
+            <td><p class="fw-bold">Postion 3:</p>{{getPsudoByPosition(3)}}</td>
+            <td><p class="fw-bold">Postion 4:</p>{{getPsudoByPosition(4)}}</td>
+            <td><p class="fw-bold">Postion 5:</p>{{getPsudoByPosition(5)}}</td>
+            
+          </tr>
+          <tr>
+            
+            <td colspan="4"><p class="fw-bold">Postion 1:</p>{{getPsudoByPosition(1)}}</td>
+            
+            
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+    
     <div class="card-body text-end">
       <h2 class="card-title fw-light">{{team_name}}</h2>
       <p class="card-text fw-light">A team by {{captain_name}}.</p>

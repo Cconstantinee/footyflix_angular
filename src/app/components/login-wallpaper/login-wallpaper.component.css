@@ -1,0 +1,39 @@
+.container-fluid {
+    height: 100vh; /* Adjust the height as needed */
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    /* Initial background image */
+    
+  }
+
+
+
+.first-container{
+    transition: background-image 0.5s ease-in-out;
+    animation: fadeInOut 10s infinite alternate;
+}
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    60%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity:0;
+    }
+  }

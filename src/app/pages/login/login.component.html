@@ -1,3 +1,4 @@
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <div class="container-fluid d-flex justify-content-center align-items-center">
   <div class="wrapper" [class.active]="isActive">
     <span class="bg-animate"></span>
@@ -6,12 +7,12 @@
       <h2 class="animation" style="--i: 1;">Login</h2>
       <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
         <div class="input-box animation" style="--i: 1;">
-          <input type="text" required [(ngModel)]="username"  name="username">
+          <input type="text" name="username" pattern="[a-zA-Z0-9_-]{3,10}" required [(ngModel)]="username"  name="username">
           <label for="">Username</label>
           <i class='bx bxs-user-rectangle'></i>
         </div>
         <div class="input-box animation" style="--i: 2;">
-          <input type="password" required [(ngModel)]="password" name="password">
+          <input type="password" name="password" required [(ngModel)]="password" name="password">
           <label for="">Password</label>
           <i class='bx bxs-lock-alt'></i>
         </div>
@@ -25,23 +26,23 @@
     </div>
     <div class="info-text login" [class.active]="isActive" >
       <h2 class="animation" style="--i: 0;">Welcome Back!</h2>
-      <p class="animation" style="--i: 1;">lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+      <p class="animation" style="--i: 1;">lorem ipsum, ta7ki birrasmi m5aaleha lorem ipsum.</p>
     </div>
-    <div class="from-box register" [class.active]="isActive">
-      <h2 class="animation" style="--i: 17; --j:0;">Sign Up</h2>
+    <div class="from-box register">
+      <h2 class="animation" style="--i: 17; --j:0;" >Sign Up</h2>
       <form action="#">
         <div class="input-box animation" style="--i: 18; --j:1;">
-          <input type="text" required>
+          <input type="text" name="username" required [(ngModel)]="playerInfo.psudo">
           <label for="">Username</label>
           <i class='bx bxs-user-rectangle'></i>
         </div>
         <div class="input-box animation" style="--i: 19; --j:2;">
-          <input type="email" required>
+          <input type="email" required> <!-- Changed type to email -->
           <label for="">Email</label>
           <i class='bx bxs-envelope'></i>
         </div>
         <div class="input-box animation" style="--i: 20; --j:3;">
-          <input type="password" required>
+          <input type="password" name="password" required [(ngModel)]="playerInfo.password">
           <label for="">Password</label>
           <i class='bx bxs-lock-alt'></i>
         </div>
