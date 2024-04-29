@@ -1,0 +1,27 @@
+
+<div class="row justify-content-center">
+  <div class="col">
+    <ul class="nav nav-tabs justify-content-center">
+      <li class="nav-item col-md-4">
+        <button class="btn nav-link" (click)="switchtab('Players')">Players</button>
+      </li>
+      <li class="nav-item col-md-4">
+        <button class="btn nav-link" (click)="switchtab('Teams')">Teams</button>
+      </li>
+      <li class="nav-item col-md-4">
+        <button class="btn nav-link" (click)="switchtab('Stadiums')">Stadiums</button>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row text-center">
+  <table class="table table-striped" *ngIf="showtable=='Players'">
+    hihih
+  </table>
+  <table class="table table-striped" *ngIf="showtable=='Teams'">
+    hihihhihih
+  </table>
+  <table class="table table-striped" *ngIf="showtable=='Stadiums'">
+    hihihiha
+  </table>
+</div>
