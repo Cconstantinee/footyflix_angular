@@ -70,7 +70,7 @@ export class WallpapersComponent implements OnInit{
   display_image:string='../../../assets/captain-background.png';
 
   setImage(){
-    console.log("seting new image",this.title);
+    console.log("setting new image",this.title);
     switch (this.title) {
       case 'front_title':
         this.display_image='../../../assets/stadium_lights.png';
@@ -81,11 +81,11 @@ export class WallpapersComponent implements OnInit{
       case 'match_maker_console':
         this.display_image='../../../assets/match-background.png';
         break;
-        case 'admin_console':
-          this.display_image='../../../assets/admin-transformed(1).png';
+        case 'admin_page':
+          this.display_image='../../../assets/admin_background.png';
           break;
-        case 'login_console':
-          this.display_image='../../../assets/match-background.png';
+        case 'login_page':
+          this.display_image='../../../assets/admin_background.png';
           break;
         case 'tournament_console':
           this.display_image='../../../assets/match-background.png';

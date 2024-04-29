@@ -33,6 +33,10 @@ export class AppComponent {
         this.title_varient="profile_page";
         
         break;
+        case 'open_admin_page':
+          this.title_varient="admin_page";
+          
+          break;
       default:
         break;
         
