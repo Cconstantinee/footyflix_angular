@@ -32,10 +32,10 @@ export class TeamsConsoleComponent implements OnInit {
   }
 
   getTeams(): void {
-    if(this.captainID!=null){
+    if (this.captainID != null) {
       this.teamServices.getTeamsFromAPI(this.captainID).subscribe(
         (data) => {
-          this.teams=data;
+          this.teams = data;
         },
         (error) => {
           console.error('Error fetching teams:', error);
@@ -43,6 +43,7 @@ export class TeamsConsoleComponent implements OnInit {
       );
     }
   }
+  
 
   toggleMatchMaker() {
     this.matchMakerOn = !this.matchMakerOn;

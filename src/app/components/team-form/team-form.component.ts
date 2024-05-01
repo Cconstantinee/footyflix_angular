@@ -2,6 +2,7 @@ import { Component, OnInit,Input, Output, EventEmitter} from '@angular/core';
 import { PlayersService } from '../../services/player-services.service';
 import { TeamsService } from '../../services/teams.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/authentication.service';
 
 
 @Component({
@@ -13,14 +14,15 @@ export class TeamFormComponent implements OnInit {
   display = "none";
   allPlayers: any[] = [];
   selectedPlayers: (number | null |string)[] = new Array<number | null|string>;
-  @Input() Captain_ID:number|null=null;
+  Captain_ID:number|null=null;
   @Output() messageEvent = new EventEmitter<string>();
 
   team_name:string='';
-  constructor(private playersService: PlayersService, private teamsService:TeamsService,private router:Router) { }
-
+  constructor(private playersService: PlayersService, private teamsService:TeamsService,private router:Router,public authService:AuthService) { }
+  
   ngOnInit() {
-    
+    this.Captain_ID=this.authService.getUserIdFromToken();
+    console.log("captain_id:",this.Captain_ID)
     this.getPlayers(); // Fetch players when component initializes
   }
 
@@ -34,10 +36,10 @@ export class TeamFormComponent implements OnInit {
         this.allPlayers = data.filter(player => !this.selectedPlayers.includes(player.user_id)); 
         
         // Check if there is only one slot left and the captain's ID hasn't been selected
-        const remainingSlots = 12 - this.selectedPlayers.length;
+        const remainingSlots = 11 - this.selectedPlayers.length+this.countEmptySlots(this.selectedPlayers);
         const captainSelected = this.selectedPlayers.includes(this.Captain_ID); // Assuming captainId is the variable holding the captain's ID
         
-        console.log("remainign slots",remainingSlots," is captain selected? ",captainSelected);
+        console.log("remainign slots",remainingSlots," is captain selected? :",this.Captain_ID,this.selectedPlayers.includes(this.Captain_ID));
         if (remainingSlots === 1 && !captainSelected) {
           // Only one slot left and captain not selected, filter the allPlayers array to contain only the captain's ID
           this.allPlayers = this.allPlayers.filter(player => player.user_id === this.Captain_ID);
@@ -51,7 +53,19 @@ export class TeamFormComponent implements OnInit {
     );
   }
   
-
+  countEmptySlots(data: any[]): number {
+    let emptyCount: number = 0;
+  
+    // Iterate over each element in the array
+    for (let i = 0; i < data.length; i++) {
+      // Check if the slot is empty (you can define your own conditions here)
+      if (data[i] === undefined || data[i] === null || data[i] === '') {
+        emptyCount++;
+      }
+    }
+  
+    return emptyCount;
+  }
   
 
   closeModal() {
