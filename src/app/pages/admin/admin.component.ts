@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import {PlayersService} from '../../services/player-services.service';
 import { TeamsService } from '../../services/teams.service';
 import { StadiumService } from '../../services/stadium-service.service';
@@ -14,7 +13,16 @@ import { StadiumService } from '../../services/stadium-service.service';
 export class AdminComponent {
 
   //CONSTRUCTOR FOR ALL SERVICES
+  
   constructor(private PlayersService: PlayersService, private TeamsService: TeamsService,private stadiumService: StadiumService){}  
+  
+  //TO LOAD DATA WHEN COMPONENT IS INITIALIZED
+
+  ngOnInit(){
+    this.fetchPlayers();
+    this.fetchTeams();
+    this.fetchStadiums();
+  }  
   
   //GET PLAYERS
   
