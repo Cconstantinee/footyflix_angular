@@ -11,6 +11,7 @@ export class NavbarComponent {
   @Output() clickEvent=new EventEmitter<string>();
  
   constructor(public authService:AuthService){}
+  
   main_clicked(message:string){
 
     this.clickEvent.emit(message);

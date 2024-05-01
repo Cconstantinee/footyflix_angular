@@ -107,7 +107,7 @@ export class LoginComponent implements OnInit {
 //snackbar not working :'(
 showLoginSuccessMessage() {
   this.snackBar.open('Login successful', 'Close', {
-    duration: 2000,
+    duration: 5000,
     horizontalPosition: 'center',
     verticalPosition: 'top',
     panelClass: ['success-snackbar'] // Custom CSS class for styling
@@ -115,7 +115,7 @@ showLoginSuccessMessage() {
 }
 showRegisterSuccessMessage() {
   this.snackBar.open('register successful', 'Close', {
-    duration: 2000,
+    duration: 5000,
     horizontalPosition: 'center',
     verticalPosition: 'top',
     panelClass: ['success-snackbar'] // Custom CSS class for styling

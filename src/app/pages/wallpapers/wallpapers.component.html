@@ -1,5 +1,5 @@
 <div *ngIf="title!='login-register'&&title!='front_title'&&title!='profile_page'">
-    <div *ngIf="title!='login-register'" class="image-container bg-image d-flex z-0 position-absolute top-0 end-0 justify-content-end">
+    <div *ngIf="title!='login-register'" class="image-container bg-image d-flex z-0 position-absolute top-0 end-0 justify-content-end"  style="overflow-x:hidden">
         <img [src]="display_image" class="img-fluid" style="height: 50vh;opacity: 0.2; transform: translate(20px,20px);" alt="">
     </div>
     <div *ngIf="title!='login-register'" class="image-container bg-image d-flex z-0 position-absolute top-0 start-0 justify-content-start">
@@ -14,7 +14,7 @@
 
 <div *ngIf="title=='front_title'">
     <div class="image-container bg-image d-flex z-3 position-absolute bottom-0 end-0 justify-content-end" style="overflow:hidden;transform: translatey(20px);">
-        <img src="../../../assets/stadium_lights.png" class="img-fluid" style="height: 50vh;opacity: 0.2; transform: translate(100px,35px);" alt="">
+        <img src="../../../assets/stadium_lights.png" class="img-fluid" style="height: 50vh;opacity: 0.2; transform: translate(100px,10px);" alt="">
     </div>
     <div class="image-container bg-image d-flex z-0 position-absolute bottom-0 start-0 justify-content-start">
         <img src="../../../assets/back-goal2.svg" class="img-fluid" style="height:40vh;opacity: 0.5; transform: translate(-50px,20px);" alt="">
@@ -33,6 +33,6 @@
 <div>{{first_container_images[currentImageIndex1]}}</div>
 </div>
 
-<div class="container-fluid d-flex z-0 position-absolute top-0" style="background-image:url('../../../assets/profile_backdrop-transformed.png');height: 100vh;opacity: 0.2;" *ngIf="title=='profile_page'">
+<div class="container-fluid d-flex z-0 position-absolute top-0" style="background-image:url('../../../assets/profile_backdrop-transformed.png');height: 110vh;opacity: 0.2;" *ngIf="title=='profile_page'">
 
 </div>
