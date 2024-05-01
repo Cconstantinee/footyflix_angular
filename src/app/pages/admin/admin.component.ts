@@ -10,7 +10,7 @@ import { StadiumService } from '../../services/stadium-service.service';
   styleUrl: './admin.component.css'
 })
 
-export class AdminComponent {
+export class AdminComponent implements OnInit {
 
   //CONSTRUCTOR FOR ALL SERVICES
   
@@ -23,7 +23,7 @@ export class AdminComponent {
     this.fetchTeams();
     this.fetchStadiums();
   }  
-  
+
   //GET PLAYERS
   
   PlayersData: any[] = [];
