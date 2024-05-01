@@ -3,25 +3,66 @@
   <div class="col">
     <ul class="nav nav-tabs justify-content-center">
       <li class="nav-item col-md-4">
-        <button class="btn nav-link" (click)="switchtab('Players')">Players</button>
+        <button class="btn nav-link" (click)="fetchPlayers(); switchtab('Players')">Players</button>
       </li>
       <li class="nav-item col-md-4">
-        <button class="btn nav-link" (click)="switchtab('Teams')">Teams</button>
+        <button class="btn nav-link" (click)="fetchTeams(); switchtab('Teams')">Teams</button>
       </li>
       <li class="nav-item col-md-4">
-        <button class="btn nav-link" (click)="switchtab('Stadiums')">Stadiums</button>
+        <button class="btn nav-link" (click)="fetchStadiums(); switchtab('Stadiums')">Stadiums</button>
       </li>
     </ul>
   </div>
 </div>
 <div class="row text-center">
   <table class="table table-striped" *ngIf="showtable=='Players'">
-    hihih
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of PlayersData ">
+        <td>{{player.user_id}}</td>
+        <td>{{player.psudo}}</td>
+        <td>{{player.tel}}</td>
+        <td>{{player.email}}</td>
+      </tr>
+    </tbody>
   </table>
   <table class="table table-striped" *ngIf="showtable=='Teams'">
-    hihihhihih
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Captain ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let team of TeamsData">
+        <td>{{team.team_id}}</td>
+        <td>{{team.team_name}}</td>
+        <td>{{team.captain_id}}</td>
+      </tr>
+    </tbody>
   </table>
   <table class="table table-striped" *ngIf="showtable=='Stadiums'">
-    hihihiha
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Manager ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stadium of StadiumsData">
+        <td>{{stadium.stadium_id}}</td>
+        <td>{{stadium.stadium_name}}</td>
+        <td>{{stadium.manager_id}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>

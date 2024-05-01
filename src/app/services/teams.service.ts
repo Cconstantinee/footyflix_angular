@@ -26,4 +26,8 @@ export class TeamsService {
     const params=new HttpParams().set('team_id',team_id.toString());
     return this.http.get<any[]>(this.ROOT_URL,{params});
   }
+  getTeamsPlayers() :Observable<any[]>{
+    let parmas= new HttpParams()
+    return this.http.get<any[]>(this.ROOT_URL);
+  }
 }
