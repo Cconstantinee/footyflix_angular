@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { PlayersService } from '../../services/player-services.service';
-interface playerInfo {
-  psudo:string;
-  email:string;
-  password:string;
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../services/authentication.service';
+
+interface PlayerInfo {
+  pseudo: string;
+  email: string;
+  password: string;
 }
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,45 +18,108 @@ interface playerInfo {
 export class LoginComponent implements OnInit {
 
   isActive: boolean = false;
-  username: string = '';
-  password: string = '';
-  playerInfo: playerInfo={psudo:'',email:'',password:''};
+  
+  registerForm: FormGroup;
+  loginForm: FormGroup;
+  errorMessage:string=''
+  @Output() messageEvent= new EventEmitter();
 
-  constructor(private playersService: PlayersService){
+  constructor(private playersService: PlayersService, private fb: FormBuilder,private snackBar: MatSnackBar,private authService:AuthService) {
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('[a-zA-Z0-9_]+')]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]]
+    });
 
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(3), Validators.pattern('[a-zA-Z0-9_]+')]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
+
   ngOnInit() {
-    const wrapper = document.querySelector('.wrapper');
-    const registerLink = document.querySelector('.register-link');
-    const loginLink = document.querySelector('.login-link');
-
-    registerLink?.addEventListener('click', () => {
-      this.toggleActive(true);
-    });
-
-    loginLink?.addEventListener('click', () => {
-      this.toggleActive(false);
-    });
+    // Event handling directly in the template is recommended instead of querying the DOM
   }
 
-  onLoginSubmit() {
-    // Implémentez votre logique de connexion ici
-    console.log('Formulaire de connexion soumis');
-  }
+ 
 
-  onSignUpClick() {
-    this.toggleActive(true); // Active la partie du formulaire d'inscription
-  }
-
-  toggleActive(value: boolean) {
-    this.isActive = value;
+  signUpToggle() {
+    this.isActive =!this.isActive; // Activate the registration part of the form
+    this.errorMessage='';
   }
 
   onSignUpSubmit() {
-    console.log("sent data",this.playerInfo);
-    this.playersService.sendNewUserToAPI(this.playerInfo).subscribe(
-      (response)=>{console.log(response)},
-      (error)=>{console.log("there was a problem",error)}
-    )
+    if (this.registerForm.valid) {
+      this.playersService.sendNewUserToAPI(this.registerForm.value).subscribe(
+        (response) => {
+          console.log('API Response:', response);
+
+          if (response.hasOwnProperty('success')) {
+            // User created successfully
+            this.showRegisterSuccessMessage();
+            this.registerForm.reset(); // Reset form
+            this.signUpToggle();
+          } else if (response.hasOwnProperty('error')) {
+            // Check for specific error message
+            if (response.error === 'username or email already used!') {
+              this.errorMessage = response.error;
+            } else {
+              this.errorMessage = 'An error occurred while registering the user.';
+            }
+          }
+        },
+        (error) => {
+          console.log('Error:', error);
+          this.errorMessage = 'An error occurred while sending the request.';
+        }
+      );
+    } else {
+      this.errorMessage = 'Invalid inputs. Please check the form.';
     }
+  }
+  onLoginSubmit(): void {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value).subscribe(
+        (response) => {
+          console.log('Login successful!', response);
+          this.showLoginSuccessMessage();
+          this.messageEvent.emit('open_main_page');
+        },
+        (error) => {
+          console.error('Login error:', error);
+          if (error.status === 401 && error.error && error.error.message) {
+            this.errorMessage = error.error.message;
+          } else {
+            this.errorMessage = 'Failed to login. Invalid credentials probebly.';
+          }
+          this.loginForm.reset();
+        }
+      );
+    } else {
+      this.errorMessage = 'Invalid inputs';
+    }
+  }
+
+
+
+
+
+//snackbar not working :'(
+showLoginSuccessMessage() {
+  this.snackBar.open('Login successful', 'Close', {
+    duration: 2000,
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    panelClass: ['success-snackbar'] // Custom CSS class for styling
+  });
+}
+showRegisterSuccessMessage() {
+  this.snackBar.open('register successful', 'Close', {
+    duration: 2000,
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    panelClass: ['success-snackbar'] // Custom CSS class for styling
+    
+  });
+}
 }

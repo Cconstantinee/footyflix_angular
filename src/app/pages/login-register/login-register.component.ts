@@ -7,10 +7,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class LoginRegisterComponent {
 
+
 @Output() messageEvent= new EventEmitter();
   backToHome() {
   this.messageEvent.emit('open_main_page');
   console.log("button clicked, event sent");
 }
+handleMessage($event: any) {
+  this.backToHome();
+  }
 
 }

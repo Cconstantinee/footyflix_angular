@@ -1,7 +1,9 @@
 <app-navbar (clickEvent)="handleButtons($event)" *ngIf="title_varient!='login-register'"></app-navbar>
 <!--{{title_varient}}-->
 <!--{{ConsolesActive}}-->
+
 <body>
+    <router-outlet></router-outlet>
     <app-wallpapers *ngIf="true" [title]="wallpaperSwitch()"></app-wallpapers>
     <app-login-register *ngIf="title_varient=='login-register'" (messageEvent)="handleButtons($event)"></app-login-register>
     <div class="container z-3 position-relative shadow pb-5 mt-5 front-container fade-in-bottom" *ngIf="title_varient=='front_title'" style="">
@@ -49,4 +51,3 @@
     
 </body>
 
- 

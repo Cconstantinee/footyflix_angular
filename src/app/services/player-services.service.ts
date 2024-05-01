@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PlayersService {
 
   private readonly ROOT_URL:string='http://localhost/footyflix_php/functions/players_service.php';
-
+  private readonly REGISTER_URL:string='http://localhost/footyflix_php/functions/register.php';
 
   constructor(private http:HttpClient) { }
 
@@ -17,9 +17,9 @@ export class PlayersService {
     return this.http.get<any[]>(this.ROOT_URL);
   }
   sendNewUserToAPI(userData: any): Observable<any> {
-    // Envoie la nouvelle utilisateur à l'API en utilisant HTTP POST
-    return this.http.post<any>(this.ROOT_URL, userData);
+    return this.http.post<any>(this.REGISTER_URL, userData);
   }
+  
   getcurrentuserFromAPI(data: any): Observable<any> {
     return this.http.post<any>(this.ROOT_URL, data);
 }

@@ -18,7 +18,7 @@ import { TitleCardComponent } from './components/title-card/title-card.component
 import { NavigationDeckComponent } from './components/navigation-deck/navigation-deck.component';
 import { TeamsConsoleComponent } from './pages/teams-console/teams-console.component';
 import { MatchesConsoleComponent } from './pages/matches-console/matches-console.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import {PlayersService} from './services/player-services.service';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
@@ -33,6 +33,17 @@ import { ProfileViewComponent } from './pages/profile-view/profile-view.componen
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { LoginWallpaperComponent } from './components/login-wallpaper/login-wallpaper.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { LoginTestComponent } from './login-test/login-test.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth-guard.guard';
+import { JwtInterceptor } from './services/token.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+const routes:Routes=[
+  {path:'login-register',component:LoginRegisterComponent},
+  {path:'front-page',component:FrontPageButtonComponent},
+  {path:'admin-page',component:AdminComponent}
+];
 
 @NgModule({
   declarations: [
@@ -61,16 +72,18 @@ import { AdminComponent } from './pages/admin/admin.component';
     ProfilePageComponent,
     LoginWallpaperComponent,
     AdminComponent,
+    LoginTestComponent,
     
     
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    NgSelectModule, FormsModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,NgbModule
+    AppRoutingModule,MatSnackBarModule,
+    NgSelectModule, FormsModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,NgbModule,RouterModule.forRoot(routes)
   ],
-  providers: [PlayersService],
+  exports:[RouterModule],
+  providers: [PlayersService,AuthGuard,{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule {
