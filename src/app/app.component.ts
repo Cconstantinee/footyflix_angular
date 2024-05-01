@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,8 @@ export class AppComponent {
   
   
   ConsolesActive: boolean=false;
+
+  constructor(public authService:AuthService ){}
 
   handleButtons(input:string){
     switch (input) {

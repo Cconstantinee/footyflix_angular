@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Renderer2 } from '@angular/core';
+import { AuthService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-profil',
@@ -8,7 +9,7 @@ import { Renderer2 } from '@angular/core';
 })
 export class ProfilComponent implements AfterViewInit {
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2 ,public authService:AuthService) { }
 
   ngAfterViewInit(): void {
     // Ajouter le script /cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js

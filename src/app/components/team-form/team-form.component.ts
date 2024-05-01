@@ -13,7 +13,7 @@ export class TeamFormComponent implements OnInit {
   display = "none";
   allPlayers: any[] = [];
   selectedPlayers: (number | null |string)[] = new Array<number | null|string>;
-  @Input() Captain_ID:number=0;
+  @Input() Captain_ID:number|null=null;
   @Output() messageEvent = new EventEmitter<string>();
 
   team_name:string='';
@@ -71,15 +71,17 @@ export class TeamFormComponent implements OnInit {
     else{
       this.selectedPlayers[0]=this.team_name;
       
-      this.teamsService.sendNewTeamToAPI(this.selectedPlayers,this.Captain_ID).subscribe(
-        (data) => {
-          console.log("teamsAPI response", data);
-        },
-        (error) => {
-          console.log("Error sending team to API:", error);
-          
-        }
-      )
+      if(this.Captain_ID!=null){
+        this.teamsService.sendNewTeamToAPI(this.selectedPlayers,this.Captain_ID).subscribe(
+          (data) => {
+            console.log("teamsAPI response", data);
+          },
+          (error) => {
+            console.log("Error sending team to API:", error);
+            
+          }
+        )
+      }
       console.log("form submitted ",this.selectedPlayers);
       this.messageEvent.emit("refresh_team_table");
       this.closeModal();

@@ -1,5 +1,6 @@
 import { Component, OnInit ,Input,Output, EventEmitter } from '@angular/core';
 import { TeamServices } from './team-services';
+import { AuthService } from '../../services/authentication.service';
 
 
 
@@ -11,7 +12,7 @@ import { TeamServices } from './team-services';
 export class TeamsConsoleComponent implements OnInit {
 
   @Output() message=new EventEmitter();
-  @Input() captainID:number=1;
+ captainID:number|null=this.authService.getUserIdFromToken();
 
   matchMakerOn: boolean = false;
   areThereTeams: boolean = true;
@@ -22,7 +23,7 @@ export class TeamsConsoleComponent implements OnInit {
   selectedTeamName:string='';
 
 
-  constructor(private teamServices: TeamServices) { }
+  constructor(private teamServices: TeamServices,public authService:AuthService) { }
   
   ngOnInit(): void {
     this.selectedTeamName='';
@@ -31,14 +32,16 @@ export class TeamsConsoleComponent implements OnInit {
   }
 
   getTeams(): void {
-    this.teamServices.getTeamsFromAPI(this.captainID).subscribe(
-      (data) => {
-        this.teams=data;
-      },
-      (error) => {
-        console.error('Error fetching teams:', error);
-      }
-    );
+    if(this.captainID!=null){
+      this.teamServices.getTeamsFromAPI(this.captainID).subscribe(
+        (data) => {
+          this.teams=data;
+        },
+        (error) => {
+          console.error('Error fetching teams:', error);
+        }
+      );
+    }
   }
 
   toggleMatchMaker() {

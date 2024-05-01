@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { jwtDecode } from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -62,4 +64,23 @@ export class AuthService {
     // Get token from local storage
     return localStorage.getItem('token');
   }
+  getUsernameFromToken(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      return decoded.username;
+    }
+    return null;
+  }
+
+  getUserIdFromToken(): number | null {
+    const token = this.getToken();
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      return decoded.user_id;
+    }
+    return null;
+  }
 }
+  
+

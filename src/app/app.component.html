@@ -1,12 +1,12 @@
-<app-navbar (clickEvent)="handleButtons($event)" *ngIf="title_varient!='login-register'"></app-navbar>
+<app-navbar  (clickEvent)="handleButtons($event)" *ngIf="authService.isLoggedIn()"></app-navbar>
 <!--{{title_varient}}-->
 <!--{{ConsolesActive}}-->
 
 <body>
     <router-outlet></router-outlet>
-    <app-wallpapers *ngIf="true" [title]="wallpaperSwitch()"></app-wallpapers>
-    <app-login-register *ngIf="title_varient=='login-register'" (messageEvent)="handleButtons($event)"></app-login-register>
-    <div class="container z-3 position-relative shadow pb-5 mt-5 front-container fade-in-bottom" *ngIf="title_varient=='front_title'" style="">
+    <app-wallpapers [title]="wallpaperSwitch()" *ngIf="authService.isLoggedIn()"></app-wallpapers>
+    <app-login-register *ngIf="!authService.isLoggedIn()" (messageEvent)="handleButtons($event)"></app-login-register>
+    <div class="container z-3 position-relative shadow pb-5 mt-5 front-container fade-in-bottom" *ngIf="authService.isLoggedIn()&&title_varient=='front_title'" style="">
         
         <div class="row px-2 py-2" style="color: #253738; border: #253738;border-radius: 1px;">
             <app-title-card [title_varient]="title_varient" [consoleActive]="ConsolesActive"></app-title-card>
