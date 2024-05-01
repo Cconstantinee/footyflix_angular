@@ -12,6 +12,6 @@ export class StadiumService {
   constructor(private http: HttpClient) { }
 
   getStadiumsFromAPI(): Observable<any[]> {
-    return this.http.get<any[]>('your_stadiums_api_url');
+    return this.http.get<any[]>(this.ROOT_URL);
   }
 }
