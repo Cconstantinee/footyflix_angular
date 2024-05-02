@@ -55,6 +55,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>Manager ID</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -62,6 +64,8 @@
         <td>{{stadium.stadium_id}}</td>
         <td>{{stadium.stadium_name}}</td>
         <td>{{stadium.manager_id}}</td>
+        <td><button class="btn">edit</button></td>
+        <td><button class="btn"(click)="deleteStadiumOnClick(stadium.stadium_id)"></button></td>
       </tr>
     </tbody>
   </table>
