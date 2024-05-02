@@ -47,6 +47,8 @@
         <td>{{team.team_id}}</td>
         <td>{{team.team_name}}</td>
         <td>{{team.captain_id}}</td>
+        <td><button class="btn">edit</button></td>
+        <td><button class="btn"(click)="deleteTeamOnClick(team.team_id); fetchTeams()">Remove</button></td>
       </tr>
     </tbody>
   </table>
@@ -66,7 +68,7 @@
         <td>{{stadium.stadium_name}}</td>
         <td>{{stadium.manager_id}}</td>
         <td><button class="btn">edit</button></td>
-        <td><button class="btn"(click)="deleteStadiumOnClick(stadium.stadium_id)">Remove</button></td>
+        <td><button class="btn"(click)="deleteStadiumOnClick(stadium.stadium_id); fetchStadiums()">Remove</button></td>
       </tr>
     </tbody>
   </table>
