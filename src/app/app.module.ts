@@ -39,6 +39,10 @@ import { AuthGuard } from './guards/auth-guard.guard';
 import { JwtInterceptor } from './services/token.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TeamEditFormComponent } from './components/team-edit-form/team-edit-form.component';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 const routes:Routes=[
   {path:'login-register',component:LoginRegisterComponent},
   {path:'front-page',component:FrontPageButtonComponent},
@@ -73,13 +77,15 @@ const routes:Routes=[
     LoginWallpaperComponent,
     AdminComponent,
     LoginTestComponent,
+    TeamEditFormComponent,
     
     
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,MatSnackBarModule,
+    AppRoutingModule,MatSnackBarModule,MatInputModule,
+    MatButtonModule,
     NgSelectModule, FormsModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,NgbModule,RouterModule.forRoot(routes)
   ],
   exports:[RouterModule],
