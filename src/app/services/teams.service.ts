@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class TeamsService {
 
   private readonly ROOT_URL:string='http://localhost/footyflix_php/functions/teams_service.php';
+  private readonly GET_TEAMS_URL:string='http://localhost/footyflix_php/functions/get_all_teams.php';
 
   constructor(private http:HttpClient) { }
 
@@ -31,6 +32,6 @@ export class TeamsService {
     return this.http.get<any[]>(this.ROOT_URL);
   }
   getTeamsFromAPI() :Observable<any[]>{
-    return this.http.get<any[]>(this.ROOT_URL);
+    return this.http.get<any[]>(this.GET_TEAMS_URL);
   }
 }

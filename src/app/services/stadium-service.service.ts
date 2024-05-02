@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class StadiumService {
 
   private readonly ROOT_URL:string='http://localhost/footyflix_php/functions/stadium_service.php'
+  private readonly DELETE_URL:string='http://localhost/footyflix_php/functions/delete_stadium.php'
   
   constructor(private http: HttpClient) { }
 
@@ -15,8 +16,9 @@ export class StadiumService {
     return this.http.get<any[]>(this.ROOT_URL);
   }
 
-  deleteStadiums(stadium_id: number): Observable<void>{
-    return this.http.delete<void>(`${this.ROOT_URL}?id=${stadium_id}`);
+  deleteStadium(stadiumId: number): Observable<any> {
+    const url = `${this.DELETE_URL}?stadium_id=${stadiumId}`;
+    return this.http.delete<any>(url);
   }
 
   createStadiums(stadiumName: string, managerId: number): Observable<void>{

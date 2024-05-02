@@ -36,7 +36,7 @@ export class AdminComponent implements OnInit {
 
   //GET TEAMS
 
-  TeamsData: any[] = [];
+  TeamsData: any;
   fetchTeams(){
     this.TeamsService.getTeamsFromAPI().subscribe(data => {
       this.TeamsData= data;
@@ -54,14 +54,16 @@ export class AdminComponent implements OnInit {
   
   // Delete stadium
   deleteStadiumOnClick(stadiumId: number){
-    this.stadiumService.deleteStadiums(stadiumId).subscribe(
-      ()=>{
-        console.log(`Stadium with ID ${stadiumId} successfully removed.`);
+    console.log("deleting stadium in progress :",stadiumId)
+    this.stadiumService.deleteStadium(stadiumId).subscribe(
+      (data)=>{
+        console.log(data);
       },
       error=>{
         console.error('Error when deleting stadium: ',error);
       }
     );
+    this.fetchStadiums();
   }
 
   // Add stadium

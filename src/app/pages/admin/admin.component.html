@@ -42,6 +42,7 @@
       </tr>
     </thead>
     <tbody>
+      {{TeamsData |json}}
       <tr *ngFor="let team of TeamsData">
         <td>{{team.team_id}}</td>
         <td>{{team.team_name}}</td>
