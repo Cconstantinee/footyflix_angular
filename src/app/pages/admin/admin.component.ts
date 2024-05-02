@@ -52,6 +52,41 @@ export class AdminComponent implements OnInit {
     });
   }
   
+  // Delete stadium
+  deleteStadiumOnClick(stadiumId: number){
+    this.stadiumService.deleteStadiums(stadiumId).subscribe(
+      ()=>{
+        console.log(`Stadium with ID ${stadiumId} successfully removed.`);
+      },
+      error=>{
+        console.error('Error when deleting stadium: ',error);
+      }
+    );
+  }
+
+  // Add stadium
+  addStadium(stadiumName: string, managerId: number){
+    this.stadiumService.createStadiums(stadiumName, managerId).subscribe(
+      ()=>{
+        console.log(`Stadium ${stadiumName} managed by the manager having the id ${managerId} successfully created.`);
+      },
+      error=>{
+        console.error('Error when creating stadium: ',error);
+      }
+    );
+  }
+
+  // Update stadium
+  updateStadium(stadiumId: number, stadiumName: string, managerId: number){
+    this.stadiumService.editStadium(stadiumId, stadiumName, managerId).subscribe(
+      ()=>{
+        console.log(`Stadium with id ${stadiumId} successfully updated.`);
+      },
+      error=>{
+        console.error('Error when updating stadium: ',error)
+      }
+    )
+  }
 
   //SHOWTAB FUNCTION
   showtable: String="Players";
