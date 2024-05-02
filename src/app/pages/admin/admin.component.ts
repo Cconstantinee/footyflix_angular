@@ -42,6 +42,17 @@ export class AdminComponent implements OnInit {
       this.TeamsData= data;
     })
   }
+  // Delete Team
+  deleteTeamOnClick(teamId: number){
+    this.TeamsService.deleteTeamByAPI(teamId).subscribe(
+      (data)=>{
+        console.log(data);
+      },
+      (error)=>{
+        console.log("Error when deleting team: ",error);
+      }
+    );
+  }
 
   //GET STADIUMS
 
