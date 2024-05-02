@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
 
   TeamsData: any[] = [];
   fetchTeams(){
-    this.TeamsService.getTeamsPlayers().subscribe(data => {
+    this.TeamsService.getTeamsFromAPI().subscribe(data => {
       this.TeamsData= data;
     })
   }

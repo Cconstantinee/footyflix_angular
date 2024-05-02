@@ -30,4 +30,7 @@ export class TeamsService {
     let parmas= new HttpParams()
     return this.http.get<any[]>(this.ROOT_URL);
   }
+  getTeamsFromAPI() :Observable<any[]>{
+    return this.http.get<any[]>(this.ROOT_URL);
+  }
 }
