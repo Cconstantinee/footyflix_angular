@@ -26,4 +26,9 @@ export class TeamsService {
     const params=new HttpParams().set('team_id',team_id.toString());
     return this.http.get<any[]>(this.ROOT_URL,{params});
   }
+
+  updateTeamByAPI(data:any):Observable<any[]>{
+
+    return this.http.put<any[]>(this.ROOT_URL,data);
+  }
 }

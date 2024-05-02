@@ -45,7 +45,10 @@
                         </div>
                     </div>
                     <div *ngIf="player.get('player_id')?.errors?.['duplicatePlayerId'] && (player.get('player_id')?.touched || player.get('player_id')?.dirty)">
-                        This player ID is already added.
+                        This player is already added.
+                      </div>
+                      <div *ngIf="player.get('position')?.errors?.['duplicatePosition'] && (player.get('position')?.touched || player.get('position')?.dirty)">
+                        This position is already taken.
                       </div>
                 </div>
                 <button mat-raised-button color="primary" (click)="addPlayer()" [disabled]="max_player_edit==11">+ Add</button>
@@ -55,9 +58,7 @@
 
     </div>
     <div class="card-footer">
-        <button mat-raised-button color="success" [disabled]="max_player_edit==0||this.changePlayersForm.invalid">Submit player changes</button>
-        <button mat-raised-button color="success" (click)="ngOnInit">refresh</button>
+        <button mat-raised-button color="success" [disabled]="max_player_edit==0||this.changePlayersForm.invalid" (click)="submitPlayerForm()">Submit player changes</button>
+        
     </div>
 </div>
-{{this.changeNameForm.value | json}}
-{{this.changePlayersForm.value | json}}
