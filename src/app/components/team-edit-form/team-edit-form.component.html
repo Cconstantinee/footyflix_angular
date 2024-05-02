@@ -1,22 +1,24 @@
-<div class="card m-3 p-3 justify-content-center" style="width: 75vh;height: 60vh;">
-    <h4 class="fw-light">Change team name:</h4>
-    <div class="divider-dark"></div>
+<div class="card m-3 p-3 justify-content-center" style="width: 60vh;height: 75vh;">
+    <h4 class="fw-light" style="color: white;">Change team name:</h4>
+    <div class="divider-white"></div>
     {{team_name}}
-    <form [formGroup]="changeNameForm" (submit)="changeName()">
-        <mat-form-field appearance="fill">
-          <mat-label>New name:</mat-label>
-          <input matInput type="text" formControlName="team_name">
-        </mat-form-field>
-        <br><button mat-raised-button type="submit" color="primary">Save</button><br>
-        
-    </form>
+    <div class="my-2">
+        <form [formGroup]="changeNameForm" (submit)="changeName()">
+            <mat-form-field appearance="fill">
+              <mat-label>New name:</mat-label>
+              <input matInput type="text" formControlName="team_name">
+            </mat-form-field>
+            <br><button mat-raised-button type="submit" color="primary">Save</button>
+            
+        </form>
+    </div>
     
 
 
 
 <!--Player change-->
-<h4 class="fw-light">Change team players:</h4>
-<div class="divider-dark"></div>
+<h4 class="fw-light" style="color: white;">Change team players:</h4>
+<div class="divider-white"></div>
     <div class="mt-2" style="overflow-y: scroll;height: 100%;overflow-x: hidden;">
         
         <form [formGroup]="changePlayersForm">
@@ -25,29 +27,37 @@
     
                 <div *ngFor="let player of playerForms.controls; let i=index" [formGroupName]="i">
                     <div class="row">
-                        <div class="col p-2">
-                            <mat-form-field appearance="fill">
+                        <div class="col p-1">
+                            <mat-form-field style="width: 135px;">
                                 <mat-label>Position :</mat-label>
-                                <input matInput type="number" min="1" max="11" formControlName="Position"/>
+                                <input matInput type="number" min="1" max="11" formControlName="position">
                             </mat-form-field>
                             
                         </div>
-                        <div class="col p-2">
-                            <mat-form-field appearance="fill">
-                                <mat-label>Player :</mat-label>
-                                <input matInput type="text" formControlName="player_id">
-                                
-                            </mat-form-field>
+                        <div class="col p-1">
+                            <ng-select formControlName="player_id">
+                                <ng-option *ngFor="let p of PlayerList" [value]="p.user_id">{{p.psudo}}</ng-option>
+                             </ng-select>
                             
                         </div>
                         <div class="col p-2">
                             <button mat-raised-button color="warn" (click)="deletePlayer(i)">Remove</button>
                         </div>
                     </div>
+                    <div *ngIf="player.get('player_id')?.errors?.['duplicatePlayerId'] && (player.get('player_id')?.touched || player.get('player_id')?.dirty)">
+                        This player ID is already added.
+                      </div>
                 </div>
                 <button mat-raised-button color="primary" (click)="addPlayer()" [disabled]="max_player_edit==11">+ Add</button>
             </div>
                 
         </form>
+
+    </div>
+    <div class="card-footer">
+        <button mat-raised-button color="success" [disabled]="max_player_edit==0||this.changePlayersForm.invalid">Submit player changes</button>
+        <button mat-raised-button color="success" (click)="ngOnInit">refresh</button>
     </div>
 </div>
+{{this.changeNameForm.value | json}}
+{{this.changePlayersForm.value | json}}
