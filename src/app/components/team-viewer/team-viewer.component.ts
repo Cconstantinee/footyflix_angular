@@ -1,4 +1,4 @@
-import { Component, Input,OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input,OnInit, Output, SimpleChanges } from '@angular/core';
 import { TeamsService } from '../../services/teams.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { TeamsService } from '../../services/teams.service';
 export class TeamViewerComponent {
 
 
-  
+  @Output() MessageEvent= new EventEmitter();
   @Input() team_id:number=0;
   @Input() team_name:string='';
   @Input() captain_id:number|null=null;
@@ -17,19 +17,23 @@ export class TeamViewerComponent {
   players: any[]=[];
   ngOnInit(): void {
     // Call getTeamPlayers when component is loaded
+
+  
     this.getTeamPlayers();
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // Call getTeamPlayers when team_id changes
     if (changes['team_id'] && !changes['team_id'].firstChange) {
       this.getTeamPlayers();
+
     }
   }
 
   constructor(private teamsService:TeamsService){}
   editTeam() {
-    throw new Error('Method not implemented.');
+    this.MessageEvent.emit('toggle_edit');
     }
     deleteTeam() {
       const confirmation = prompt("Are you sure you want to delete " + this.team_name + "? Type 'yes' to confirm");

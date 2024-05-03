@@ -76,31 +76,50 @@ export class TeamFormComponent implements OnInit {
     this.selectedPlayers[position] = $event;
     this.getPlayers(); // Update player list whenever a player is selected
   }
-  sendForm(){
-    
-    if((this.selectedPlayers.length%2!=0)||(!this.selectedPlayers.includes(this.Captain_ID))||(this.team_name=='')){
-      console.log("form not complete!");
-      alert("insufficent number of players, missing a name or you forgot yourself (this is a placeholder text)");
+  sendForm() {
+    // Check conditions for form completeness
+    if (
+        this.selectedPlayers.length % 2 !== 0 ||
+        !this.selectedPlayers.includes(this.Captain_ID) ||
+        this.team_name === ''
+    ) {
+        // Handle incomplete form
+        console.log("Form not complete!");
+        alert("Insufficient number of players, missing a name, or you forgot to select yourself.");
+    } else {
+        // Assign team name to the first element of selectedPlayers array
+        this.selectedPlayers[0] = this.team_name;
+
+        // Check if Captain_ID is not null
+        if (this.Captain_ID !== null) {
+            // Send team data to API using teamsService
+            this.teamsService.sendNewTeamToAPI(this.selectedPlayers, this.Captain_ID).subscribe(
+                (data) => {
+                    // Handle successful response from API
+                    console.log("Teams API response:", data);
+                    // Optionally, you can emit an event or perform additional actions based on the response
+                    this.messageEvent.emit("refresh_team_table");
+                    this.closeModal(); // Close modal after successful form submission
+                },
+                (error) => {
+                    // Handle error response from API
+                    console.log("Error sending team to API:", error);
+                    // Check if there's a specific error response from the backend
+                    if (error.error && error.error.message) {
+                        console.log("Backend Error:", error.error.message);
+                        alert("Backend Error: " + error.error.message); // Display backend error message to the user
+                    } else {
+                        alert("An unexpected error occurred. Please try again."); // Generic error message
+                    }
+                }
+            );
+        } else {
+            console.log("Captain_ID is null. Cannot send team to API.");
+            // Handle scenario where Captain_ID is null (optional based on your application logic)
+        }
     }
-    else{
-      this.selectedPlayers[0]=this.team_name;
-      
-      if(this.Captain_ID!=null){
-        this.teamsService.sendNewTeamToAPI(this.selectedPlayers,this.Captain_ID).subscribe(
-          (data) => {
-            console.log("teamsAPI response", data);
-          },
-          (error) => {
-            console.log("Error sending team to API:", error);
-            
-          }
-        )
-      }
-      console.log("form submitted ",this.selectedPlayers);
-      this.messageEvent.emit("refresh_team_table");
-      this.closeModal();
-    }
-  }
+}
+
   reloadComponent() {
     this.router.navigate([this.router.url]);
 }

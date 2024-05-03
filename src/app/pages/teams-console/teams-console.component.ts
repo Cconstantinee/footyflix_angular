@@ -14,6 +14,7 @@ export class TeamsConsoleComponent implements OnInit {
   @Output() message=new EventEmitter();
  captainID:number|null=this.authService.getUserIdFromToken();
 
+  toggleEdit:boolean=false;
   matchMakerOn: boolean = false;
   areThereTeams: boolean = true;
   showForm:boolean=false;
@@ -29,6 +30,7 @@ export class TeamsConsoleComponent implements OnInit {
     this.selectedTeamName='';
     this.getTeams();
     console.log('Component initialized');
+    
   }
 
   getTeams(): void {

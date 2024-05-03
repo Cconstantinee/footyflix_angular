@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
 import { PlayersService } from '../../services/player-services.service';
 import { duplicatePlayerIdValidator } from './duplicatePlayerIdValidator';
@@ -17,7 +17,7 @@ export class TeamEditFormComponent implements OnInit,OnDestroy {
   max_player_edit:number=0;
   PlayerList:any;
   @Input() team_id:number|null=null;
-
+  @Output() messageEvent=new EventEmitter();
 
   constructor(private fb:FormBuilder ,private playerService:PlayersService,private teamsService:TeamsService){
     this.changeNameForm=this.fb.group({
@@ -113,7 +113,30 @@ export class TeamEditFormComponent implements OnInit,OnDestroy {
   submitPlayerForm(){
     if(this.changePlayersForm.valid){
       console.log("form is valid")
-      this.teamsService.updateTeamByAPI(this.changePlayersForm.getRawValue).subscribe()
+      this.teamsService.updateTeamByAPI(this.team_id,this.changePlayersForm.getRawValue).subscribe(
+        
+      )
+      console.log(this.changePlayersForm.getRawValue)
+    }
+    else{
+      console.log('form invalid, check your inputs')
+    }
+  }
+  submitNameForm(){
+    if(this.changePlayersForm.valid){
+      console.log("form is valid")
+      this.teamsService.updateTeamNameByAPI(this.team_id,this.changeNameForm.value.team_name).subscribe(
+        (response) => {
+          console.log('Response:', response);
+          // Handle the response data here
+        },
+        (error) => {
+          console.error('Error:', error);
+          // Handle any errors that occurred
+        }
+        
+      )
+      this.messageEvent.emit('refresh_teams');
     }
     else{
       console.log('form invalid, check your inputs')

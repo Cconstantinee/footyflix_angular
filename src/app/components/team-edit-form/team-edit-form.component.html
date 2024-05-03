@@ -3,7 +3,7 @@
     <div class="divider-white"></div>
     {{team_name}}
     <div class="my-2">
-        <form [formGroup]="changeNameForm" (submit)="changeName()">
+        <form [formGroup]="changeNameForm" (submit)="submitNameForm()">
             <mat-form-field appearance="fill">
               <mat-label>New name:</mat-label>
               <input matInput type="text" formControlName="team_name">
