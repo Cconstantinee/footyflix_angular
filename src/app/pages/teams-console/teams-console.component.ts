@@ -79,4 +79,14 @@ export class TeamsConsoleComponent implements OnInit {
     this.selectedTeamName=test[1];
     console.log(test);
   }
+
+  handleEvent(event:any){
+    if(event===true){
+      this.getTeams();
+
+    }
+    else{
+      this.toggleEdit=!this.toggleEdit;
+    }
+  }
 }

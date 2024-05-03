@@ -57,6 +57,7 @@ export class TeamViewerComponent {
             console.error(error); 
           }
         );
+        this.MessageEvent.emit(true);
       } else {
         console.log('Deletion canceled by user.');
       }

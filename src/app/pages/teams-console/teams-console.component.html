@@ -38,7 +38,7 @@
         
         <!--display/edit screen------------------------------------------>
                 <div class="col col-6 text-center" id="team_view">
-                    <app-team-viewer (MessageEvent)="toggleEdit=!toggleEdit" *ngIf="selectedTeamId!=0" [team_id]="selectedTeamId" [team_name]="selectedTeamName" [captain_id]="captainID"></app-team-viewer>
+                    <app-team-viewer (MessageEvent)="handleEvent($event)" *ngIf="selectedTeamId!=0" [team_id]="selectedTeamId" [team_name]="selectedTeamName" [captain_id]="captainID"></app-team-viewer>
                    
                 </div>
             </div>
